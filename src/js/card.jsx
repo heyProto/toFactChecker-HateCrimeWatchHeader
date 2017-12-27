@@ -19,7 +19,7 @@ export default class toCluster extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
+      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
 
     if (this.props.optionalConfigJSON) {
@@ -55,22 +55,23 @@ export default class toCluster extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(nextProps.dataJSON) {
       this.setState({
-        dataJSON: nextProps.dataJSON,
-        languageTexts: this.getLanguageTexts(nextProps.dataJSON.card_data.data.language)
+        dataJSON: nextProps.dataJSON
       });
     }
   }
 
   ellipsizeTextBox() {
-    var container = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title-container`),
-      text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`);
+    let container = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title-container`),
+      text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
+      wordArray;
 
-    var wordArray = text.innerHTML.split(' ');
-    console.log(container.offsetHeight, text.offsetHeight)
+    // Setting the string to work with edit mode.
+    text.innerHTML = this.state.dataJSON.data.title;
+
+    wordArray = this.state.dataJSON.data.title.split(' ');
     while (container.offsetHeight < text.offsetHeight) {
       wordArray.pop();
       text.innerHTML = wordArray.join(' ') + '...';
-      console.log("loop", container.offsetHeight , text.offsetHeight)
     }
   }
 

@@ -51,4 +51,8 @@
   pointer-events: none;
   cursor: default;
 }
+.protograph-app-holder {
+  display: table;
+  margin: 40px auto;
+}
 /*# sourceMappingURL=master-style.css.map */

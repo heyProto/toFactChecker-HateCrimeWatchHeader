@@ -53,9 +53,13 @@
               "link"
             ],
             "minItems": 1,
+            "maxItems": 6,
             "addButtonText": "Add a new link",
             "type": "object"
-          }
+          },
+          "minItems": 1,
+          "maxItems": 6,
+          "type": "array"
         },
         "analysis": {
           "id": "/properties/data/properties/analysis",

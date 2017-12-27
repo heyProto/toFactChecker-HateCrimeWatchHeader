@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import ProfileCard from './card.jsx';
+import Card from './card.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
 export default class editToCluster extends React.Component {
@@ -9,18 +9,19 @@ export default class editToCluster extends React.Component {
     super(props)
     this.state = {
       step: 1,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
-      mode: "laptop",
+      dataJSON: {},
+      mode: "col7",
       publishing: false,
       schemaJSON: undefined,
       fetchingData: true,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined
+      optionalConfigSchemaJSON: undefined,
+      uiSchemaJSON: {},
+      refLinkDetails: undefined
     }
+    this.refLinkSourcesURL = window.ref_link_sources_url
     this.toggleMode = this.toggleMode.bind(this);
+    this.formValidator = this.formValidator.bind(this);
   }
 
   exportData() {
@@ -36,35 +37,89 @@ export default class editToCluster extends React.Component {
   }
 
   componentDidMount() {
-    // get sample json data based on type i.e string or object
-    //console.log(axios.get(this.props.dataURL));
+    // get sample json data based on type i.e string or object.
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
-          //console.log(card.data);
-          this.setState({
-            fetchingData: false,
-            dataJSON: {
-              card_data: card.data,
-              configs: opt_config.data
-            },
-            schemaJSON: schema.data,
-            optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data
-          });
-        }));
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL),
+        axios.get(this.props.uiSchemaURL),
+        axios.get(this.refLinkSourcesURL)
+      ])
+      .then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema, linkSources) => {
+        let stateVars = {
+          fetchingData: false,
+          dataJSON: card.data,
+          schemaJSON: schema.data,
+          optionalConfigJSON: opt_config.data,
+          optionalConfigSchemaJSON: opt_config_schema.data,
+          uiSchemaJSON: uiSchema.data,
+          refLinkDetails: linkSources.data
+        },
+        links = stateVars.dataJSON.data.links;
+
+        if (links.length) {
+          this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
+        }
+
+        this.setState(stateVars);
+      }));
     }
+  }
+
+  checkAndUpdateLinkInfo(links, refLinkDetails) {
+    links.forEach((e,i) => {
+      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails);
+      if (linkDetails) {
+        e.favicon_url = linkDetails.favicon_url;
+        e.publication_name = linkDetails.name;
+      }
+    });
+  }
+
+  lookUpLinkDetail(link, refLinkDetails) {
+    refLinkDetails = refLinkDetails || this.state.refLinkDetails;
+
+    let linkParams = this.parseUrl(link),
+      lookupLink = refLinkDetails.filter((e, i) => {
+        console.log(e.url, linkParams.origin, e.url === linkParams.origin, "klklklklkklk")
+        return e.url === linkParams.origin;
+      })[0];
+    console.log(linkParams, lookupLink, refLinkDetails.filter((e, i) => {
+      return e.url === linkParams.origin;
+    }), "lllllllllllll")
+      return lookupLink;
+  }
+
+  parseUrl(url) {
+    var parser = document.createElement('a'),
+      search;
+    parser.href = url;
+    return {
+      protocol: parser.protocol,
+      host: parser.host,
+      hostnam: parser.hostname,
+      port: parser.port,
+      pathname: parser.pathname,
+      hash: parser.hash,
+      searchString: parser.search,
+      origin: parser.origin
+    };
   }
 
   onChangeHandler({formData}) {
     switch (this.state.step) {
       case 1:
         this.setState((prevStep, prop) => {
-          // let dataJSON = prevStep.dataJSON;
-          // dataJSON.card_data = formData
-          // return {
-          //   dataJSON: dataJSON
-          // }
+          let dataJSON = prevStep.dataJSON;
+          console.log(formData, ";;;")
+          this.checkAndUpdateLinkInfo(formData.links)
+          dataJSON.data = formData;
+
+          return {
+            dataJSON: dataJSON
+          }
         })
         break;
       case 2:
@@ -99,6 +154,27 @@ export default class editToCluster extends React.Component {
     }
   }
 
+  formValidator(formData, errors) {
+      switch (this.state.step) {
+        case 1:
+          formData.links.forEach((e, i) => {
+            let details = this.lookUpLinkDetail(e.link);
+            console.log(details, ";;;;;;;;");
+            if (!details) {
+              console.log(details, "+++++++");
+
+              // errors[i].options.addError("Atleast one option must be true.");
+              errors.links[i].addError("Article domain is invalid");
+            }
+          });
+          return errors;
+        default:
+          return errors;
+      }
+
+    return errors;
+  }
+
   renderSEO() {
     let blockquote_string = ``;
     let seo_blockquote = '<blockquote>' + blockquote_string + '</blockquote>'
@@ -108,10 +184,12 @@ export default class editToCluster extends React.Component {
   renderSchemaJSON() {
     switch(this.state.step){
       case 1:
-        // return this.state.schemaJSON;
+        let schema = JSON.parse(JSON.stringify(this.state.schemaJSON.properties.data))
+        delete schema.properties.analysis;
+        return schema;
         break;
       case 2:
-        // return this.state.optionalConfigSchemaJSON;
+        return this.state.optionalConfigSchemaJSON;
         break;
     }
   }
@@ -119,7 +197,7 @@ export default class editToCluster extends React.Component {
   renderFormData() {
     switch(this.state.step) {
       case 1:
-        // return this.state.dataJSON.card_data;
+        return this.state.dataJSON.data;
         break;
       case 2:
         // return this.state.dataJSON.configs;
@@ -149,6 +227,20 @@ export default class editToCluster extends React.Component {
     }
   }
 
+  getUISchemaJSON() {
+    switch (this.state.step) {
+      case 1:
+        return this.state.uiSchemaJSON.section1.data;
+        break;
+      case 2:
+        return this.state.uiSchemaJSON.section2.data;
+        break;
+      default:
+        return {};
+        break;
+    }
+  }
+
   onPrevHandler() {
     let prev_step = --this.state.step;
     this.setState({
@@ -159,6 +251,7 @@ export default class editToCluster extends React.Component {
   toggleMode(e) {
     let element = e.target.closest('a'),
       mode = element.getAttribute('data-mode');
+
     this.setState((prevState, props) => {
       let newMode;
       if (mode !== prevState.mode) {
@@ -174,8 +267,6 @@ export default class editToCluster extends React.Component {
   }
 
   render() {
-
-    console.log("final", this.state.dataJSON.card_data);
     if (this.state.fetchingData) {
       return(<div>Loading</div>)
     } else {
@@ -187,13 +278,16 @@ export default class editToCluster extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    ToDistrictProfile
+                    ToCluster
                   </div>
                 </div>
                 <JSONSchemaForm schema={this.renderSchemaJSON()}
                   onSubmit={((e) => this.onSubmitHandler(e))}
                   onChange={((e) => this.onChangeHandler(e))}
+                  uiSchema={this.getUISchemaJSON()}
+                  validate={this.formValidator}
                   formData={this.renderFormData()}>
+                  <br/>
                   <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
                   <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
                 </JSONSchemaForm>
@@ -202,26 +296,34 @@ export default class editToCluster extends React.Component {
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
                     <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
-                      data-mode='laptop'
+                      data-mode='col7'
                       onClick={this.toggleMode}
                     >
-                      <i className="desktop icon"></i>
+                      col-7
                     </a>
                     <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
-                      data-mode='mobile'
+                      data-mode='col4'
                       onClick={this.toggleMode}
                     >
-                      <i className="mobile icon"></i>
+                      col-4
+                    </a>
+                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
+                      data-mode='col3'
+                      onClick={this.toggleMode}
+                    >
+                      col-3
                     </a>
                   </div>
                 </div>
-                <ProfileCard
-                  mode={this.state.mode}
-                  dataJSON={this.state.dataJSON}
-                  schemaJSON={this.state.schemaJSON}
-                  optionalConfigJSON={this.state.optionalConfigJSON}
-                  optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                />
+                <div className="protograph-app-holder">
+                  <Card
+                    mode={this.state.mode}
+                    dataJSON={this.state.dataJSON}
+                    schemaJSON={this.state.schemaJSON}
+                    optionalConfigJSON={this.state.optionalConfigJSON}
+                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                  />
+                </div>
               </div>
             </div>
           </div>
