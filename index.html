@@ -14,42 +14,22 @@
         margin: 10px 20px;
       }
     </style>
-    <div class="test-card">
-      <h4>col3</h4>
-      <div id="card_col3"></div>
-    </div>
 
-    <div class="test-card">
-      <h4>col4</h4>
-      <div id="card_col4"></div>
-    </div>
-
-    <div class="test-card">
-      <h4>col7</h4>
-      <div id="card_col7"></div>
-    </div>
+    <div id="card" class="test-card"></div>
 
     <script src = "./dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toCluster(),
-      options = {
-        data_url: "dist/0.0.1/sample.json",
-        schema_url: 'dist/0.0.1/schema.json',
-        configuration_url: "./dist/0.0.1/configuration_sample.json",
-        configuration_schema_url: './dist/0.0.1/configuration_schema.json'
-      };
-
-    options.selector = document.querySelector('#card_col3');
-    x.init(options);
-    x.renderCol3();
-
-    options.selector = document.querySelector('#card_col4');
-    x.init(options);
-    x.renderCol4();
-
-    options.selector = document.querySelector('#card_col7');
-    x.init(options);
-    x.renderCol7();
+    var x = new ProtoGraph.Card.toCluster();
+    x.init({
+      selector: document.querySelector('#card'),
+      data_url: "dist/0.0.1/sample.json",
+      schema_url: 'dist/0.0.1/schema.json',
+      configuration_url: "./dist/0.0.1/configuration_sample.json",
+      configuration_schema_url: './dist/0.0.1/configuration_schema.json'
+    });
+    //x.renderCol3();
+    //x.renderCol4();
+    //x.renderCol7();
 
 
     </script>

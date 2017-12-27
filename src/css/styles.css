@@ -8,40 +8,36 @@ body {
   letter-spacing: normal;
   box-sizing: border-box;
 }
-.protograph-col7-mode {
+.protograph-col3-mode {
   height: 70px;
   width: 220px;
+}
+.protograph-col4-mode {
+  height: 70px;
+  width: 300px;
 }
 .protograph-tocluster-card {
   border-top: 1px solid grey;
   background-color: #efefef;
   padding: 10px;
 }
-.protograph-tocluster-title {
+.protograph-tocluster-title-container {
+  display: block;
   height: 38px;
+  overflow: hidden;
 }
-.protograph-tocluster-title a {
-  /* font-family: Bitter; */
+.protograph-tocluster-title {
   font-size: 14px;
-  /* font-weight: normal; */
-  /* font-style: normal; */
-  /* font-stretch: normal; */
-  line-height: 1.36;
-  letter-spacing: normal;
+  /* line-height: 1.36; */
+  /* letter-spacing: normal; */
   color: #333333;
+  display: block;
 }
 .protograph-tocluster-other-info {
   float: left;
 }
 .protograph-tocluster-byline, .protograph-tocluster-timeago {
-  /* font-family: Cabin; */
   font-size: 9px;
-  /* font-weight: normal; */
-  /* font-style: normal; */
-  /* font-stretch: normal; */
-  /* line-height: 1.33; */
-  /* letter-spacing: normal; */
-  /* text-align: left; */
   color: #8e8e8e;
 }
 .protograph-tocluster-favicons {
