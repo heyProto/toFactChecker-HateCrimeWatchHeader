@@ -16,6 +16,10 @@ body {
   height: 70px;
   width: 300px;
 }
+.protograph-col7-mode {
+  height: 70px;
+  width: 540px;
+}
 .protograph-tocluster-card {
   border-top: 1px solid grey;
   background-color: #efefef;
@@ -28,10 +32,13 @@ body {
 }
 .protograph-tocluster-title {
   font-size: 14px;
-  /* line-height: 1.36; */
-  /* letter-spacing: normal; */
+  line-height: 1.36;
+  letter-spacing: normal;
   color: #333333;
   display: block;
+}
+.protograph-tocluster-title:hover {
+  color: #333333;
 }
 .protograph-tocluster-other-info {
   float: left;
@@ -41,8 +48,16 @@ body {
   color: #8e8e8e;
 }
 .protograph-tocluster-favicons {
-  display: inline-block;
   float: right;
+}
+.protograph-tocluster-favicon-link {
+  height: 13px;
+  width: 13px;
+  display: inline-block;
+  margin-right: 8px;
+}
+.protograph-tocluster-favicon-link:last-child {
+  margin-right: 0px
 }
 .protograph-tocluster-favicon {
   height: 13px;

@@ -104,7 +104,14 @@ export default class toCluster extends React.Component {
     if (this.state.fetchingData ){
       return(<div>Loading</div>)
     } else {
-      return (<div>Under construction</div>)
+      return (
+        <div
+          id="protograph_div"
+          className="protograph-col7-mode protograph-tocluster-card"
+          style={{ fontFamily: this.state.languageTexts.font }}>
+          {this.renderCard()}
+        </div>
+      )
     }
   }
 
@@ -159,7 +166,7 @@ export default class toCluster extends React.Component {
                 greyscale = "protograph-tocluster-greyscale"
               }
               return (
-                <a key={i} href={e.link} target="_blank">
+                <a key={i} href={e.link} target="_blank" className="protograph-tocluster-favicon-link">
                   <img className={`protograph-tocluster-favicon ${greyscale}`} src={e.favicon_url} />
                 </a>
               )
