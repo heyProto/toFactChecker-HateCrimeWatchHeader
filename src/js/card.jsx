@@ -113,14 +113,17 @@ export default class toCluster extends React.Component {
     if (this.state.fetchingData) {
       return (<div>Loading</div>)
     } else {
-      const data = this.state.dataJSON.data;
+      const data = this.state.dataJSON.data,
+        link = data.links[0];
       return (
         <div
           id="protograph_div"
           className="protograph-col7-mode protograph-tocluster-card"
           style={{ fontFamily: this.state.languageTexts.font }}>
           <div className="protograph-card">
-            <div className="protograph-tocluster-title" id="protograph_tocluster_title">{data.title}</div>
+            <div className="protograph-tocluster-title" id="protograph_tocluster_title">
+              <a href={link.link} target="_blank">{data.title}</a>
+            </div>
             <div className="protograph-tocluster-other-info">
               <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
               <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />

@@ -19,6 +19,8 @@ body {
 }
 .protograph-tocluster-title {
   height: 38px;
+}
+.protograph-tocluster-title a {
   /* font-family: Bitter; */
   font-size: 14px;
   /* font-weight: normal; */
