@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import TimeAgo from 'react-timeago';
 
 export default class toCluster extends React.Component {
 
@@ -60,6 +61,18 @@ export default class toCluster extends React.Component {
     }
   }
 
+  ellipsizeTextBox(el) {
+    var wordArray = el.innerHTML.split(' ');
+    while (el.scrollHeight > el.offsetHeight) {
+      wordArray.pop();
+      el.innerHTML = wordArray.join(' ') + '...';
+    }
+  }
+
+  componentDidUpdate () {
+    this.ellipsizeTextBox(document.getElementById('protograph_tocluster_title'));
+  }
+
   getLanguageTexts(languageConfig) {
     let language = languageConfig ? languageConfig : "hindi",
       text_obj;
@@ -100,7 +113,36 @@ export default class toCluster extends React.Component {
     if (this.state.fetchingData) {
       return (<div>Loading</div>)
     } else {
-      return (<div>Under construction</div>)
+      const data = this.state.dataJSON.data;
+      return (
+        <div
+          id="protograph_div"
+          className="protograph-col7-mode protograph-tocluster-card"
+          style={{ fontFamily: this.state.languageTexts.font }}>
+          <div className="protograph-card">
+            <div className="protograph-tocluster-title" id="protograph_tocluster_title">{data.title}</div>
+            <div className="protograph-tocluster-other-info">
+              <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
+              <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
+            </div>
+            <div className="protograph-tocluster-favicons">
+              {
+                data.links.map((e,i) => {
+                  let greyscale = "";
+                  if (i > 0) {
+                    greyscale = "protograph-tocluster-greyscale"
+                  }
+                  return (
+                    <a href={e.link} target="_blank">
+                      <img className={`protograph-tocluster-favicon ${greyscale}`} src={e.favicon_url} />
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+      )
     }
   }
 

@@ -3,40 +3,55 @@
   <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>District Profile Card</title>
+    <title>toCluster Card</title>
     <link rel="stylesheet" type="text/css" href="https://dwln9tzsi7g07.cloudfront.net/Assets/semantic.min.css">
     <link href="https://fonts.googleapis.com/css?family=Sarala" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./src/css/styles.css">
   </head>
   <body>
     <style>
-      #card {
-        width: 640px;
-      }
-      @media only screen and (max-width: 450px)  {
-        #card {
-          width: 320px;
-        }
+      .test-card {
+        margin: 10px 20px;
       }
     </style>
-    <div id="card"></div>
+    <div class="test-card">
+      <h4>col3</h4>
+      <div id="card_col3"></div>
+    </div>
+
+    <div class="test-card">
+      <h4>col4</h4>
+      <div id="card_col4"></div>
+    </div>
+
+    <div class="test-card">
+      <h4>col7</h4>
+      <div id="card_col7"></div>
+    </div>
 
     <script src = "./dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toCluster();
-    x.init({
-      selector: document.querySelector('#card'),
-      data_url: "dist/0.0.1/sample.json",
-      schema_url: 'dist/0.0.1/schema.json',
-      configuration_url: "./dist/0.0.1/configuration_sample.json",
-      configuration_schema_url: './dist/0.0.1/configuration_schema.json'
-    })
-    if (window.innerWidth <= 500) {
-      x.renderMobile();
-    } else {
-      // x.renderLaptop();
-      x.renderLaptopCol4();
-    }
+    var x = new ProtoGraph.Card.toCluster(),
+      options = {
+        data_url: "dist/0.0.1/sample.json",
+        schema_url: 'dist/0.0.1/schema.json',
+        configuration_url: "./dist/0.0.1/configuration_sample.json",
+        configuration_schema_url: './dist/0.0.1/configuration_schema.json'
+      };
+
+    options.selector = document.querySelector('#card_col3');
+    x.init(options);
+    x.renderCol3();
+
+    options.selector = document.querySelector('#card_col4');
+    x.init(options);
+    x.renderCol4();
+
+    options.selector = document.querySelector('#card_col7');
+    x.init(options);
+    x.renderCol7();
+
+
     </script>
   </body>
 </html>
