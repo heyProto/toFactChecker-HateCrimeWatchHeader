@@ -29,7 +29,7 @@ export default class editToCluster extends React.Component {
       step: this.state.step,
       dataJSON: this.state.dataJSON,
       schemaJSON: this.state.schemaJSON,
-      optionalConfigJSON: this.state.dataJSON.configs,
+      optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
     getDataObj["name"] = getDataObj.dataJSON.data.title.substr(0,225); // Reduces the name to ensure the slug does not get too long
