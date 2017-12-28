@@ -22,7 +22,7 @@
           "id": "/properties/data/properties/published_date",
           "title": "Publised date",
           "type": "string",
-          "format": "date"
+          "format": "alt-datetime"
         },
         "links": {
           "id": "/properties/data/properties/links",
@@ -35,16 +35,19 @@
             "properties": {
               "link": {
                 "id": "/properties/data/properties/links/items/properties/link",
+                "default": "http://indianexpress.com",
                 "title": "Link",
                 "type": "string"
               },
               "favicon_url": {
                 "id": "/properties/data/properties/links/items/properties/favicon_url",
+                "default": "http://0.gravatar.com/blavatar/efe0300e7f891c5c802ed340f6b20b67?s=16",
                 "title": "Favicon URL",
                 "type": "string"
               },
               "publication_name": {
                 "id": "/properties/data/properties/links/items/properties/publication_name",
+                "default": "Indian Express",
                 "title": "Publication name",
                 "type": "string"
               }

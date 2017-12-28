@@ -10,9 +10,6 @@
                         "ui:widget": "hidden"
                     }
                 }
-            },
-            "published_date": {
-                "ui:widget": "alt-datetime"
             }
         }
     },

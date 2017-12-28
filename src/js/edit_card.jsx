@@ -58,6 +58,7 @@ export default class editToCluster extends React.Component {
           refLinkDetails: linkSources.data
         },
         links = stateVars.dataJSON.data.links;
+        stateVars.dataJSON.data.published_date = stateVars.dataJSON.data.published_date || (new Date).toString()
 
         if (links.length) {
           this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
@@ -83,12 +84,9 @@ export default class editToCluster extends React.Component {
 
     let linkParams = this.parseUrl(link),
       lookupLink = refLinkDetails.filter((e, i) => {
-        console.log(e.url, linkParams.origin, e.url === linkParams.origin, "klklklklkklk")
         return e.url === linkParams.origin;
       })[0];
-    console.log(linkParams, lookupLink, refLinkDetails.filter((e, i) => {
-      return e.url === linkParams.origin;
-    }), "lllllllllllll")
+
       return lookupLink;
   }
 
@@ -113,7 +111,6 @@ export default class editToCluster extends React.Component {
       case 1:
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
-          console.log(formData, ";;;")
           this.checkAndUpdateLinkInfo(formData.links)
           dataJSON.data = formData;
 
@@ -122,34 +119,19 @@ export default class editToCluster extends React.Component {
           }
         })
         break;
-      case 2:
-        this.setState((prevStep, prop) => {
-          // let dataJSON = prevStep.dataJSON;
-          // dataJSON.configs = formData
-          // return {
-          //   dataJSON: dataJSON
-          //   // optionalConfigJSON: dataJSON
-          // }
-        })
-        break;
     }
   }
 
   onSubmitHandler({formData}) {
     switch(this.state.step) {
       case 1:
-        // this.setState({
-        //   step: 2
-        // });
-        break;
-      case 2:
-        // if (typeof this.props.onPublishCallback === "function") {
-        //   this.setState({ publishing: true });
-        //   let publishCallback = this.props.onPublishCallback();
-        //   publishCallback.then((message) => {
-        //     this.setState({ publishing: false });
-        //   });
-        // }
+        if (typeof this.props.onPublishCallback === "function") {
+          this.setState({ publishing: true });
+          let publishCallback = this.props.onPublishCallback();
+          publishCallback.then((message) => {
+            this.setState({ publishing: false });
+          });
+        }
         break;
     }
   }
@@ -159,11 +141,7 @@ export default class editToCluster extends React.Component {
         case 1:
           formData.links.forEach((e, i) => {
             let details = this.lookUpLinkDetail(e.link);
-            console.log(details, ";;;;;;;;");
             if (!details) {
-              console.log(details, "+++++++");
-
-              // errors[i].options.addError("Atleast one option must be true.");
               errors.links[i].addError("Article domain is invalid");
             }
           });
@@ -219,9 +197,6 @@ export default class editToCluster extends React.Component {
   showButtonText() {
     switch(this.state.step) {
       case 1:
-        return 'Next';
-        break;
-      case 2:
         return 'Publish';
         break;
     }
