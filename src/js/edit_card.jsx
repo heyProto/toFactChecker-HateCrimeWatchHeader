@@ -27,12 +27,12 @@ export default class editToCluster extends React.Component {
   exportData() {
     let getDataObj = {
       step: this.state.step,
-      dataJSON: this.state.dataJSON.card_data,
+      dataJSON: this.state.dataJSON,
       schemaJSON: this.state.schemaJSON,
       optionalConfigJSON: this.state.dataJSON.configs,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    getDataObj["name"] = getDataObj.dataJSON.data.district.substr(0,225); // Reduces the name to ensure the slug does not get too long
+    getDataObj["name"] = getDataObj.dataJSON.data.title.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
@@ -154,7 +154,13 @@ export default class editToCluster extends React.Component {
   }
 
   renderSEO() {
-    let blockquote_string = ``;
+    let d = this.state.dataJSON.data,
+      linksHTML = "<ul>";
+    d.links.forEach(e => {
+      linksHTML += `<li><a href="${e.link}" target="_blank">${e.publication_name}</a></li>`
+    })
+    linksHTML += "</ul>";
+    let blockquote_string = `<h1>${d.title}</h1><p>${d.by_line}</p><p>${d.published_date}</p>${linksHTML}`;
     let seo_blockquote = '<blockquote>' + blockquote_string + '</blockquote>'
     return seo_blockquote;
   }
