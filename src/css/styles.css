@@ -2,6 +2,9 @@
 body {
   min-width: initial !important;
 }
+.clearfix {
+  clear: both;
+}
 .protograph-card {
   position: relative;
   overflow: hidden;
@@ -20,6 +23,10 @@ body {
   height: 70px;
   width: 540px;
 }
+.protograph-tocluster-card-with-analysis {
+  height: 250px;
+  padding: 10px 20px;
+}
 .protograph-tocluster-card {
   border-top: 1px solid grey;
   background-color: #efefef;
@@ -29,6 +36,13 @@ body {
   display: block;
   height: 38px;
   overflow: hidden;
+}
+.title-with-analysis {
+  height: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.75;
+  margin-bottom: 12px;
 }
 .protograph-tocluster-title {
   font-size: 14px;
@@ -42,6 +56,9 @@ body {
 }
 .protograph-tocluster-other-info {
   float: left;
+}
+.info-with-analysis {
+  margin-bottom: 12px;
 }
 .protograph-tocluster-byline, .protograph-tocluster-timeago {
   font-size: 9px;
@@ -72,4 +89,14 @@ body {
 .protograph-tocluster-greyscale {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+}
+.protograph-tocluster-analysis-container {
+  height: 140px;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  color: #757575
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import TimeAgo from 'react-timeago';
+import Markdown from 'react-markdown';
 
 export default class toCluster extends React.Component {
 
@@ -31,6 +32,7 @@ export default class toCluster extends React.Component {
     }
 
     this.state = stateVar;
+    this.processLink = this.processLink.bind(this);
   }
 
   exportData() {
@@ -102,17 +104,30 @@ export default class toCluster extends React.Component {
   }
 
   renderCol7() {
+    let data = this.state.dataJSON.data;
     if (this.state.fetchingData ){
       return(<div>Loading</div>)
     } else {
-      return (
-        <div
-          id="protograph_div"
-          className="protograph-col7-mode protograph-tocluster-card"
-          style={{ fontFamily: this.state.languageTexts.font }}>
-          {this.renderCard()}
-        </div>
-      )
+      console.log(data.analysis && data.analysis.length > 0, this.renderWithAnalysis())
+      if (data.analysis && data.analysis.length > 0 ) {
+        return(
+          <div
+            id="protograph_div"
+            className="protograph-col7-mode protograph-tocluster-card-with-analysis"
+            style={{ fontFamily: this.state.languageTexts.font }}>
+            { this.renderWithAnalysis() }
+          </div>
+        )
+      } else {
+        return (
+          <div
+            id="protograph_div"
+            className="protograph-col7-mode protograph-tocluster-card"
+            style={{ fontFamily: this.state.languageTexts.font }}>
+            { this.renderCard() }
+          </div>
+        )
+      }
     }
   }
 
@@ -174,6 +189,57 @@ export default class toCluster extends React.Component {
             })
           }
         </div>
+      </div>
+    )
+  }
+
+  processLink(e) {
+    const links = this.state.dataJSON.data.links;
+    console.log(e.type, ";;;;;;;;--------")
+    switch (e.type) {
+      case 'linkReference':
+        let linkRef = +e.identifier;
+        e.type = "link";
+        e.title = null;
+        if ((linkRef - 1) < links.length ) {
+          e.url = this.state.dataJSON.data.links[+e.identifier - 1].link;
+          return true;
+        } else  {
+          return false;
+        }
+        break;
+      case 'link':
+        // Don't allow any external link.
+        return false;
+      default:
+        return true;
+    }
+    // if (e.type === "linkReference") {
+    //   e.type = "link";
+    //   e.title = null;
+    //   e.url = this.state.dataJSON.data.links[+e.identifier - 1].link;
+    // }
+    // return true;
+  }
+
+  renderWithAnalysis() {
+    const data = this.state.dataJSON.data,
+      link = data.links[0];
+    return (
+      <div className="protograph-card">
+        <div className="protograph-tocluster-title-container title-with-analysis">
+          <a href={link.link} target="_blank" className="protograph-tocluster-title">{data.title}</a>
+        </div>
+        <div className="protograph-tocluster-other-info info-with-analysis">
+          <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
+              <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
+        </div>
+        <div className="clearfix"></div>
+        <Markdown
+          className="protograph-tocluster-analysis-container"
+          source={data.analysis}
+          allowNode={this.processLink}
+        />
       </div>
     )
   }
