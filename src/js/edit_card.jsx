@@ -119,12 +119,29 @@ export default class editToCluster extends React.Component {
           }
         })
         break;
+      case 2:
+        this.setState((prevState, prop) => {
+          let dataJSON = prevState.dataJSON;
+          if (formData.analysis && formData.analysis.length > 0) {
+            dataJSON.data.analysis = formData.analysis;
+          } else {
+            delete dataJSON.data.analysis;
+          }
+
+          return {
+            dataJSON: dataJSON
+          }
+        })
+        break;
     }
   }
 
   onSubmitHandler({formData}) {
     switch(this.state.step) {
       case 1:
+        this.setState({ step: 2 });
+        break;
+      case 2:
         if (typeof this.props.onPublishCallback === "function") {
           this.setState({ publishing: true });
           let publishCallback = this.props.onPublishCallback();
@@ -137,19 +154,18 @@ export default class editToCluster extends React.Component {
   }
 
   formValidator(formData, errors) {
-      switch (this.state.step) {
-        case 1:
-          formData.links.forEach((e, i) => {
-            let details = this.lookUpLinkDetail(e.link);
-            if (!details) {
-              errors.links[i].addError("Article domain is invalid");
-            }
-          });
-          return errors;
-        default:
-          return errors;
-      }
-
+    switch (this.state.step) {
+      case 1:
+        formData.links.forEach((e, i) => {
+          let details = this.lookUpLinkDetail(e.link);
+          if (!details) {
+            errors.links[i].addError("Article domain is invalid");
+          }
+        });
+        return errors;
+      default:
+        return errors;
+    }
     return errors;
   }
 
@@ -166,14 +182,21 @@ export default class editToCluster extends React.Component {
   }
 
   renderSchemaJSON() {
+    let schema;
     switch(this.state.step){
       case 1:
-        let schema = JSON.parse(JSON.stringify(this.state.schemaJSON.properties.data))
+        schema = JSON.parse(JSON.stringify(this.state.schemaJSON.properties.data))
         delete schema.properties.analysis;
         return schema;
         break;
       case 2:
-        return this.state.optionalConfigSchemaJSON;
+        schema = {
+          properties: {
+            analysis: this.state.schemaJSON.properties.data.properties.analysis
+          },
+          "type": "object",
+        }
+        return schema;
         break;
     }
   }
@@ -184,7 +207,7 @@ export default class editToCluster extends React.Component {
         return this.state.dataJSON.data;
         break;
       case 2:
-        // return this.state.dataJSON.configs;
+        return {analysis: this.state.dataJSON.data.analysis};
         break;
     }
   }
@@ -203,6 +226,9 @@ export default class editToCluster extends React.Component {
   showButtonText() {
     switch(this.state.step) {
       case 1:
+        return 'Next';
+        break;
+      case 2:
         return 'Publish';
         break;
     }

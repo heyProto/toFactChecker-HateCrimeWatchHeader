@@ -10,6 +10,8 @@ body {
   overflow: hidden;
   letter-spacing: normal;
   box-sizing: border-box;
+}
+.protograph-card-with-analysis {
   height: 100%;
 }
 .protograph-col3-mode {
@@ -40,7 +42,6 @@ body {
 }
 .title-with-analysis {
   max-height: 28px;
-  height: auto;
   font-size: 16px;
   font-weight: bold;
   line-height: 1.75;

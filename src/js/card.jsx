@@ -2,7 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import TimeAgo from 'react-timeago';
-import Markdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
+
+class SpanRenderer extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return(
+      <span>{JSON.stringify(this.props)}</span>
+    )
+  }
+}
 
 export default class toCluster extends React.Component {
 
@@ -40,7 +52,7 @@ export default class toCluster extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.fetchingData){
+    if (this.state.fetchingData) {
       axios.all([
         axios.get(this.props.dataURL),
         axios.get(this.props.optionalConfigURL),
@@ -55,6 +67,8 @@ export default class toCluster extends React.Component {
           languageTexts: this.getLanguageTexts(card.data.data.language)
         });
       }));
+    } else {
+      this.componentDidUpdate();
     }
   }
 
@@ -66,6 +80,16 @@ export default class toCluster extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    let data = this.state.dataJSON.data;
+    setTimeout(e => {
+      this.ellipsizeTextBox();
+      if (data.analysis && data.analysis.length > 0) {
+        this.initInteraction();
+      }
+    }, 150);
+  }
+
   ellipsizeTextBox() {
     let container = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title-container`),
       text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
@@ -73,7 +97,6 @@ export default class toCluster extends React.Component {
 
     // Setting the string to work with edit mode.
     text.innerHTML = this.state.dataJSON.data.title;
-
     wordArray = this.state.dataJSON.data.title.split(' ');
     while (container.offsetHeight < text.offsetHeight) {
       wordArray.pop();
@@ -147,16 +170,6 @@ export default class toCluster extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    let data = this.state.dataJSON.data;
-    setTimeout(e => {
-      this.ellipsizeTextBox();
-      if (data.analysis && data.analysis.length > 0) {
-        this.initInteraction();
-      }
-    }, 150);
-  }
-
   getLanguageTexts(languageConfig) {
     let language = languageConfig ? languageConfig : "hindi",
       text_obj;
@@ -182,7 +195,6 @@ export default class toCluster extends React.Component {
     if (this.state.fetchingData ){
       return(<div>Loading</div>)
     } else {
-      console.log(data.analysis && data.analysis.length > 0, this.renderWithAnalysis())
       if (data.analysis && data.analysis.length > 0 ) {
         return(
           <div
@@ -278,12 +290,14 @@ export default class toCluster extends React.Component {
           e.url = this.state.dataJSON.data.links[+e.identifier - 1].link;
           return true;
         } else  {
-          return false;
+          e.type = "span"
+          return true;
         }
         break;
+      // Don't allow any external link. Make all the links to span.
       case 'link':
-        // Don't allow any external link.
-        return false;
+        e.type = "span"
+        return true;
       default:
         return true;
     }
@@ -293,7 +307,7 @@ export default class toCluster extends React.Component {
     const data = this.state.dataJSON.data,
       link = data.links[0];
     return (
-      <div className="protograph-card">
+      <div className="protograph-card protograph-card-with-analysis">
         <div className="protograph-tocluster-title-container title-with-analysis">
           <a href={link.link} target="_blank" className="protograph-tocluster-title protograph-tocluster-title-with-analysis">{data.title}</a>
         </div>
@@ -302,10 +316,13 @@ export default class toCluster extends React.Component {
               <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
         </div>
         <div className="clearfix"></div>
-        <Markdown
+        <ReactMarkdown
           className="protograph-tocluster-analysis-container"
           source={data.analysis}
           allowNode={this.processLink}
+          renderers={{
+            span: "span"
+          }}
         />
         <div className="protograph-tocluster-footer">
           <div className="protograph-tocluster-publication">{link.publication_name}</div>
