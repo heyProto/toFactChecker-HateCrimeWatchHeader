@@ -41,16 +41,20 @@ export default class toCluster extends React.Component {
 
   componentDidMount() {
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, opt_config, opt_config_schema) => {
-          this.setState({
-            fetchingData: false,
-            dataJSON: card.data,
-            optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data,
-            languageTexts: this.getLanguageTexts(card.data.data.language)
-          });
-        }));
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL)
+      ])
+      .then(axios.spread((card, opt_config, opt_config_schema) => {
+        this.setState({
+          fetchingData: false,
+          dataJSON: card.data,
+          optionalConfigJSON: opt_config.data,
+          optionalConfigSchemaJSON: opt_config_schema.data,
+          languageTexts: this.getLanguageTexts(card.data.data.language)
+        });
+      }));
     }
   }
 
@@ -77,9 +81,79 @@ export default class toCluster extends React.Component {
     }
   }
 
+  initInteraction() {
+    let aTags = document.querySelectorAll('.protograph-tocluster-analysis-container a');
+    aTags.forEach((a,i) => {
+      if (a.getAttribute('target') !== '_blank') {
+        a.setAttribute('target', '_blank');
+        a.addEventListener('mouseover', this.highlightFavicon);
+        // a.addEventListener('mousemove', this.highlightFavicon());
+        a.addEventListener('mouseout', this.unHightlightFavicon);
+      }
+    });
+  }
+
+  highlightFavicon() {
+    let allFavicons = document.querySelectorAll('.protograph-tocluster-favicons .protograph-tocluster-favicon-link');
+    allFavicons.forEach((e) => {
+      let eHREF = e.getAttribute('href'),
+          HREF = this.getAttribute('href'),
+          image = e.querySelector('.protograph-tocluster-favicon');
+
+      if (eHREF !== HREF) {
+        image.classList.add('protograph-tocluster-greyscale')
+      } else {
+        image.classList.remove('protograph-tocluster-greyscale')
+      }
+    })
+  }
+
+  unHightlightFavicon() {
+    let allFavicons = document.querySelectorAll('.protograph-tocluster-favicons .protograph-tocluster-favicon-link');
+    allFavicons.forEach((e, i) => {
+      let eHREF = e.getAttribute('href'),
+        HREF = this.getAttribute('href'),
+        image = e.querySelector('.protograph-tocluster-favicon');
+
+      if (i === 0) {
+        image.classList.remove('protograph-tocluster-greyscale')
+      } else {
+        image.classList.add('protograph-tocluster-greyscale')
+      }
+    })
+  }
+
+  highlightLinkInAnalysis(event) {
+    let elem = event.target.closest('a.protograph-tocluster-favicon-link'),
+      allFavicons = document.querySelectorAll('.protograph-tocluster-analysis-container a');
+    allFavicons.forEach((e) => {
+      let eHREF = e.getAttribute('href'),
+        HREF = elem.getAttribute('href');
+
+      if (eHREF !== HREF) {
+        e.classList.remove('active')
+      } else {
+        e.classList.add('active')
+      }
+    })
+  }
+
+  unHighlightLinkInAnalysis(event) {
+    let elem = event.target.closest('a.protograph-tocluster-favicon-link'),
+      allFavicons = document.querySelectorAll('.protograph-tocluster-analysis-container a');
+
+    allFavicons.forEach((e, i) => {
+      e.classList.remove('active');
+    })
+  }
+
   componentDidUpdate() {
+    let data = this.state.dataJSON.data;
     setTimeout(e => {
       this.ellipsizeTextBox();
+      if (data.analysis && data.analysis.length > 0) {
+        this.initInteraction();
+      }
     }, 150);
   }
 
@@ -195,7 +269,6 @@ export default class toCluster extends React.Component {
 
   processLink(e) {
     const links = this.state.dataJSON.data.links;
-    console.log(e.type, ";;;;;;;;--------")
     switch (e.type) {
       case 'linkReference':
         let linkRef = +e.identifier;
@@ -214,12 +287,6 @@ export default class toCluster extends React.Component {
       default:
         return true;
     }
-    // if (e.type === "linkReference") {
-    //   e.type = "link";
-    //   e.title = null;
-    //   e.url = this.state.dataJSON.data.links[+e.identifier - 1].link;
-    // }
-    // return true;
   }
 
   renderWithAnalysis() {
@@ -228,7 +295,7 @@ export default class toCluster extends React.Component {
     return (
       <div className="protograph-card">
         <div className="protograph-tocluster-title-container title-with-analysis">
-          <a href={link.link} target="_blank" className="protograph-tocluster-title">{data.title}</a>
+          <a href={link.link} target="_blank" className="protograph-tocluster-title protograph-tocluster-title-with-analysis">{data.title}</a>
         </div>
         <div className="protograph-tocluster-other-info info-with-analysis">
           <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
@@ -240,6 +307,32 @@ export default class toCluster extends React.Component {
           source={data.analysis}
           allowNode={this.processLink}
         />
+        <div className="protograph-tocluster-footer">
+          <div className="protograph-tocluster-publication">{link.publication_name}</div>
+          <div className="protograph-tocluster-favicons favicons-with-analysis">
+            {
+              data.links.map((e, i) => {
+                let greyscale = "";
+                if (i > 0) {
+                  greyscale = "protograph-tocluster-greyscale"
+                }
+                return (
+                  <a
+                    key={i}
+                    href={e.link}
+                    target="_blank"
+                    className="protograph-tocluster-favicon-link"
+                    onMouseOver={this.highlightLinkInAnalysis}
+                    onMouseOut={this.unHighlightLinkInAnalysis}
+                  >
+                    <img className={`protograph-tocluster-favicon ${greyscale}`} src={e.favicon_url} />
+                  </a>
+                )
+              })
+            }
+          </div>
+          <div className="clearfix"></div>
+        </div>
       </div>
     )
   }
