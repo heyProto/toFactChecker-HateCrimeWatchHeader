@@ -21,7 +21,7 @@
         "data": {
             "analysis": {
                 "ui:widget": "textarea",
-                "ui:help": "Analysis should be minimum 300 and maximum 390 characters. Use markdown to convert parts of the analysis to links to articles. Example: This is a sample text [Link trext][1] i.e. [<article text>][<link number from 1-6>]."
+                "ui:help": "Analysis should be minimum 300 and maximum 390 characters. Use markdown to convert parts of the analysis to link to articles. Example: This is a sample text [Link text][1] i.e. [<article text>][<link number from 1-6>]."
             }
         }
     }
