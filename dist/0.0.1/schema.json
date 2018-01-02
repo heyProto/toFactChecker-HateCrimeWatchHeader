@@ -72,6 +72,7 @@
           "maxLength": 390
         }
       },
+      "title": "Card Data",
       "type": "object",
       "required": ["title", "by_line", "published_date"]
     }

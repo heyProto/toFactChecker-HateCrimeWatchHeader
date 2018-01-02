@@ -281,7 +281,7 @@ export default class editToCluster extends React.Component {
         <div className="proto-container">
           <div className="ui grid form-layout">
             <div className="row">
-              <div className="four wide column proto-card-form">
+              <div className="four wide column proto-card-form protograph-scroll-form">
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
