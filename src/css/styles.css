@@ -39,6 +39,7 @@ body {
   border-top: 1px solid grey;
   background-color: #fafafa;
   padding: 10px;
+  box-sizing: border-box;
 }
 .protograph-tocluster-title-container {
   display: block;
