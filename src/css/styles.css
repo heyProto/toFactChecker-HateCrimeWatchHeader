@@ -58,6 +58,7 @@ body {
 	line-height: 19px;
 	font-family: bitter;
   display: block;
+  text-decoration: none;
 	/* display: inline-block; */
 	/* margin-top: 12px; */
 	/* margin-bottom: 12px; */
