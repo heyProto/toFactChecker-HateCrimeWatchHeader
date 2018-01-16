@@ -238,6 +238,8 @@ export default class toCluster extends React.Component {
     } else {
       const data = this.state.dataJSON.data,
         link = data.links[0];
+      // This card code is a functional replica of renderCard() but @mojo had some design change only for the card col-3 mode hence this is coded this way.
+
       return (
         <div
           id="protograph_div"
@@ -247,7 +249,6 @@ export default class toCluster extends React.Component {
               <a href={link.link} target="_blank" className="protograph-tocluster-title">{data.title}</a>
             </div>
             <div className="protograph-tocluster-other-info">
-              <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
               <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
             </div>
             <div className="protograph-tocluster-favicons">
@@ -280,8 +281,7 @@ export default class toCluster extends React.Component {
         </div>
 
         <div className="protograph-tocluster-other-info">
-          <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
-              <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
+          <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
         </div>
         <div className="protograph-tocluster-favicons">
           {
@@ -335,8 +335,7 @@ export default class toCluster extends React.Component {
           <a href={link.link} target="_blank" className="protograph-tocluster-title protograph-tocluster-title-with-analysis">{data.title}</a>
         </div>
         <div className="protograph-tocluster-other-info info-with-analysis">
-          <span className="protograph-tocluster-byline">By {data.by_line}</span>&nbsp;
-              <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
+          <TimeAgo component="span" className="protograph-tocluster-timeago" date={data.published_date} />
         </div>
         <div className="clearfix"></div>
         <ReactMarkdown
