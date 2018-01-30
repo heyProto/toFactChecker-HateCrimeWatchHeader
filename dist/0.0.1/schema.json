@@ -24,6 +24,12 @@
           "type": "string",
           "format": "alt-datetime"
         },
+        "series":{
+          "title": "Series",
+          "type": "string",
+          "minLength":3,
+          "maxLength": 15
+        },
         "links": {
           "id": "/properties/data/properties/links",
           "title": "Links",
