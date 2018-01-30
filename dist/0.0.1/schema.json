@@ -13,11 +13,6 @@
           "minLength": 50,
           "maxLength": 140
         },
-        "by_line": {
-          "id": "/properties/data/properties/by_line",
-          "title": "By line",
-          "type": "string"
-        },
         "published_date": {
           "id": "/properties/data/properties/published_date",
           "title": "Publised date",
@@ -80,7 +75,7 @@
       },
       "title": "Card Data",
       "type": "object",
-      "required": ["title", "by_line", "published_date"]
+      "required": ["title", "published_date"]
     }
   },
   "type": "object"
