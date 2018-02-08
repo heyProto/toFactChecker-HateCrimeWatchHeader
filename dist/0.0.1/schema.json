@@ -17,7 +17,7 @@
           "id": "/properties/data/properties/published_date",
           "title": "Publised date",
           "type": "string",
-          "format": "alt-datetime"
+          "format": "date-time"
         },
         "series":{
           "title": "Series",
