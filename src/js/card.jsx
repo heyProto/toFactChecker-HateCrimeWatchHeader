@@ -23,9 +23,7 @@ export default class toCluster extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      schemaJSON: undefined,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined,
       languageTexts: undefined
     };
 
@@ -39,10 +37,6 @@ export default class toCluster extends React.Component {
       stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
     }
 
-    if (this.props.optionalConfigSchemaJSON) {
-      stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
-    }
-
     this.state = stateVar;
     this.processLink = this.processLink.bind(this);
   }
@@ -53,19 +47,26 @@ export default class toCluster extends React.Component {
 
   componentDidMount() {
     if (this.state.fetchingData) {
-      axios.all([
+      let items_to_fetch = [
         axios.get(this.props.dataURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL)
-      ])
-      .then(axios.spread((card, opt_config, opt_config_schema) => {
-        this.setState({
+        axios.get(this.props.optionalConfigURL)
+      ];
+
+      if (this.props.siteConfigURL) {
+        items_to_fetch.push(axios.get(this.props.siteConfigURL));
+      }
+
+      axios.all(items_to_fetch).then(axios.spread((card, opt_config, site_configs) => {
+        let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
           optionalConfigJSON: opt_config.data,
-          optionalConfigSchemaJSON: opt_config_schema.data,
-          languageTexts: this.getLanguageTexts(card.data.data.language)
-        });
+          siteConfigs: site_configs.data
+        };
+
+        stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
+        stateVar.languageTexts = this.getLanguageTexts(stateVar.dataJSON.data.language);
+        this.setState(stateVar);
       }));
     } else {
       this.componentDidUpdate();
