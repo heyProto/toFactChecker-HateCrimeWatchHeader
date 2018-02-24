@@ -6,20 +6,6 @@
     <title>toCluster</title>
     <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="card.min.css">
-    <script type="text/javascript">
-      var origin, base_url;
-      // Setting variables from environment
-      origin = window.location.origin;
-      if (origin == 'https://s3.ap-south-1.amazonaws.com') {
-        let bucket_name = window.location.pathname.split('/')['1'];
-        base_url = origin + "/" + bucket_name;
-      } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
-        base_url = origin;
-      } else {
-        base_url = origin;
-      }
-    </script>
-
   </head>
   <body style="margin:0px">
     <div id="toCluster_card"></div>
@@ -43,21 +29,20 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id');
+    domain_name = (findGetParameter('domain') || ""),
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
         receive: function(mode) {
-          if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
+          if(typeof (view_cast_id) !== 'undefined'){
             var that = this,
               data_base_path = base_url + "/" + view_cast_id,
-              schema_base_path = base_url + "/" + schema_id,
               params;
 
             params = {
               selector: document.querySelector('#toCluster_card'),
-              data_url: data_base_path + "/data.json",
-              configuration_url: data_base_path + "/view_cast.json"
+              data_url: data_base_path + "/data.json"
             }
 
             if (options.headerJSON) {

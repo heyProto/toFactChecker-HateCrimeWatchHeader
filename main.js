@@ -41,7 +41,6 @@ ProtoGraph.Card.toCluster.prototype.render = function () {
     <Card
       dataURL={this.options.data_url}
       schemaURL={this.options.schema_url}
-      optionalConfigURL={this.options.configuration_url}
       siteConfigs={this.options.site_configs}
       siteConfigURL={this.options.site_config_url}
       mode={this.mode}
