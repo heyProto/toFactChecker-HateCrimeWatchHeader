@@ -113,6 +113,7 @@ export default class editToCluster extends React.Component {
           let dataJSON = prevStep.dataJSON;
           this.checkAndUpdateLinkInfo(formData.links)
           dataJSON.data = formData;
+          dataJSON.data.section = formData.title;
 
           return {
             dataJSON: dataJSON
@@ -127,7 +128,7 @@ export default class editToCluster extends React.Component {
           } else {
             delete dataJSON.data.analysis;
           }
-
+          dataJSON.data.section = dataJSON.data.title;
           return {
             dataJSON: dataJSON
           }
