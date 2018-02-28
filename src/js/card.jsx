@@ -60,7 +60,7 @@ export default class toCluster extends React.Component {
           fetchingData: false,
           dataJSON: card.data,
           optionalConfigJSON:{},
-          siteConfigs: site_configs.data
+          siteConfigs: site_configs ? site_configs.data : this.state.siteConfigs
         };
 
         stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
