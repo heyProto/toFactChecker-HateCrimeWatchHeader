@@ -2,6 +2,10 @@
 body {
   min-width: initial !important;
 }
+a {
+  background: 0 0;
+  text-decoration: none;
+}
 .clearfix {
   clear: both;
 }
