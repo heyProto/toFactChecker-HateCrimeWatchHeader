@@ -58,7 +58,7 @@ export default class editToCluster extends React.Component {
           refLinkDetails: linkSources.data
         },
         links = stateVars.dataJSON.data.links;
-        stateVars.dataJSON.data.published_date = stateVars.dataJSON.data.published_date || (new Date).toString()
+        stateVars.dataJSON.data.published_date = stateVars.dataJSON.data.published_date || (new Date()).toISOString()
 
         if (links.length) {
           this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
