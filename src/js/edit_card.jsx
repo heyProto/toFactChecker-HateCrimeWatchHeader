@@ -176,7 +176,7 @@ export default class editToCluster extends React.Component {
     let d = this.state.dataJSON.data,
       linksHTML = "<ul>";
     d.links.forEach(e => {
-      linksHTML += `<li><a href="${e.link}" target="_blank">${e.publication_name}</a></li>`
+      linksHTML += `<li><a href="${e.link}" target="_blank" rel="nofollow">${e.publication_name}</a></li>`
     })
     linksHTML += "</ul>";
     let blockquote_string = `<h1>${d.title}</h1><p>${d.by_line}</p><p>${d.published_date}</p>${linksHTML}`;
