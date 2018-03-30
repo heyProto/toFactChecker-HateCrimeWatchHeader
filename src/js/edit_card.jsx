@@ -69,12 +69,26 @@ export default class editToCluster extends React.Component {
     }
   }
 
+  isUrlValid(url) {
+    if (!url) return false;
+    var res = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    if (res == null)
+      return false;
+    else
+      return true;
+  }
+
   checkAndUpdateLinkInfo(links, refLinkDetails) {
     links.forEach((e,i) => {
-      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails);
+      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails),
+        is_url_valid = this.isUrlValid(e.link);
+
       if (linkDetails) {
         e.favicon_url = linkDetails.favicon_url;
         e.publication_name = linkDetails.name;
+      } else if (is_url_valid) {
+        e.favicon_url = "https://cdn.protograph.pykih.com/lib/toCluster_default_favicon.png";
+        e.publication_name = this.parseUrl(e.link).hostname;
       }
     });
   }
@@ -97,7 +111,7 @@ export default class editToCluster extends React.Component {
     return {
       protocol: parser.protocol,
       host: parser.host,
-      hostnam: parser.hostname,
+      hostname: parser.hostname,
       port: parser.port,
       pathname: parser.pathname,
       hash: parser.hash,
@@ -160,9 +174,10 @@ export default class editToCluster extends React.Component {
     switch (this.state.step) {
       case 1:
         formData.links.forEach((e, i) => {
-          let details = this.lookUpLinkDetail(e.link);
+          // let details = this.lookUpLinkDetail(e.link);
+          let details = this.isUrlValid(e.link);
           if (!details) {
-            errors.links[i].addError("Article domain is invalid");
+            errors.links[i].addError("Article link is invalid");
           }
         });
         return errors;
