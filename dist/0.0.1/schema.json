@@ -15,9 +15,7 @@
         "title": {
           "id": "/properties/data/properties/title",
           "title": "Title",
-          "type": "string",
-          "minLength": 50,
-          "maxLength": 140
+          "type": "string"
         },
         "published_date": {
           "id": "/properties/data/properties/published_date",
