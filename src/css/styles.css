@@ -172,7 +172,7 @@ body {
 }
 
 .protograph-col4-mode {
-  height: 430px;
+  height: auto;
   width: 320px;
   background-image: radial-gradient(circle at 50% 54%, #000000, #793131);
   position: absolute;

@@ -87,16 +87,16 @@ export default class toCluster extends React.Component {
           </div>
           <div className="container" id="incidentChart">
             <div className="large-label">
-              {this.state.dataJSON.data.incidentChart.label1}
+              {this.state.dataJSON.incidentChart.label1}
             </div>
             <br />
             <div id="label2" className="large-label">
-              {this.state.dataJSON.data.incidentChart.label2}{" "}
-              {this.state.dataJSON.data.incidentChart.label3}
+              {this.state.dataJSON.incidentChart.label2}{" "}
+              {this.state.dataJSON.incidentChart.label3}
             </div>
             <br />
             <div className="large-num">
-              {this.state.dataJSON.data.incidentChart.incidentNumber}
+              {this.state.dataJSON.incidentChart.incidentNumber}
             </div>
           </div>
           <div className="container" id="description">
@@ -111,11 +111,11 @@ export default class toCluster extends React.Component {
           <div className="container" id="deathInjuryChart">
             <div id="deaths" style={{ display: "inline-block", float: "left" }}>
               <div className="small-label">
-                {this.state.dataJSON.data.deathInjuryChart.deathLabel}
+                {this.state.dataJSON.deathInjuryChart.deathLabel}
               </div>
               <br />
               <div className="small-num" style={{ paddingLeft: "15px" }}>
-                {this.state.dataJSON.data.deathInjuryChart.deathNumber}
+                {this.state.dataJSON.deathInjuryChart.deathNumber}
               </div>
             </div>
             <div
@@ -123,11 +123,11 @@ export default class toCluster extends React.Component {
               style={{ display: "inline-block", float: "right" }}
             >
               <div className="small-label">
-                {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
+                {this.state.dataJSON.deathInjuryChart.injuryLabel}
               </div>
               <br />
               <div className="small-num" style={{ paddingLeft: "5px" }}>
-                {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
+                {this.state.dataJSON.deathInjuryChart.injuryNumber}
               </div>
             </div>
           </div>
