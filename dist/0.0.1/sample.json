@@ -1,75 +1,79 @@
-{
-	"data": {
-			"title": "Hate Crimes in India",
-			"incidentChart": {
-				"label1": "Incidents of",
-				"label2": "hate",
-				"label3": "crime",
-				"incidentNumber": 257
-			},
-			"deathInjuryChart": {
-				"deathLabel": "deaths",
-				"injuryLabel": "injuries",
-				"deathNumber": 92,
-				"injuryNumber": 550
-			},
-			"leftLineChart": {
-				"label": "Religion of victims",
-				"datapoints": {
-					"items": [
-						{
-							"category": "Hindu", "percentage": 40
-						},
-						{
-							"category": "Muslim", "percentage": 32
-						},
-						{
-							"category": "Sikh", "percentage": 26
-						},
-						{
-							"category": "Unknown", "percentage": 20
-						}
-					]
+{ 
+	"title": "Hate Crimes in India",
+	"incidentChart": {
+		"label1": "Incidents of",
+		"label2": "hate",
+		"label3": "crime",
+		"incidentNumber": 257
+	},
+	"deathInjuryChart": {
+		"deathLabel": "deaths",
+		"injuryLabel": "injuries",
+		"deathNumber": 92,
+		"injuryNumber": 550
+	},
+	"leftLineChart": {
+		"label": "Religion of victims",
+		"datapoints": [
+				{
+					"category": "Hindu",
+					"percentage": 40
+				},
+				{
+					"category": "Muslim",
+					"percentage": 32
+				},
+				{
+					"category": "Sikh",
+					"percentage": 26
+				},
+				{
+					"category": "Unknown",
+					"percentage": 20
 				}
-			},
-			"middleLineChart": {
-				"label": "Religion of perpetrators",
-				"datapoints": {
-					"items": [
-						{
-							"category": "Hindu", "percentage": 40
-						},
-						{
-							"category": "Muslim", "percentage": 32
-						},
-						{
-							"category": "Sikh", "percentage": 26
-						},
-						{
-							"category": "Unknown", "percentage": 20
-						}
-					]
+			]
+	},
+	"middleLineChart": {
+		"label": "Religion of perpetrators",
+		"datapoints": [
+				{
+					"category": "Hindu",
+					"percentage": 40
+				},
+				{
+					"category": "Muslim",
+					"percentage": 32
+				},
+				{
+					"category": "Sikh",
+					"percentage": 26
+				},
+				{
+					"category": "Unknown",
+					"percentage": 20
 				}
-			},
-			"rightLineChart": {
-				"label": "Party in power",
-				"datapoints": {
-					"items": [
-						{
-							"category": "BJP", "percentage": 40
-						},
-						{
-							"category": "INC", "percentage": 32
-						},
-						{
-							"category": "AAP", "percentage": 26
-						},
-						{
-							"category": "Other", "percentage": 20
-						}
-					]
+			]
+	},
+	"rightLineChart": {
+		"label": "Party in power",
+		"datapoints": [
+				{
+					"category": "BJP",
+					"percentage": 40
+				},
+				{
+					"category": "INC",
+					"percentage": 32
+				},
+				{
+					"category": "AAP",
+					"percentage": 26
+				},
+				{
+					"category": "Other",
+					"percentage": 20
 				}
-			}
+			]
 	},
 	"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 }

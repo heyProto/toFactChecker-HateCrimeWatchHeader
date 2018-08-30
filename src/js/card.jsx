@@ -140,9 +140,9 @@ export default class toCluster extends React.Component {
     if (this.state.fetchingData) {
       return <div>Loading</div>;
     } else {
-      let leftChartItems = this.state.dataJSON.data.leftLineChart.datapoints.items;
-      let middleChartItems = this.state.dataJSON.data.middleLineChart.datapoints.items;
-      let rightChartItems = this.state.dataJSON.data.rightLineChart.datapoints.items;
+      let leftChartItems = this.state.dataJSON.leftLineChart.datapoints;
+      let middleChartItems = this.state.dataJSON.middleLineChart.datapoints;
+      let rightChartItems = this.state.dataJSON.rightLineChart.datapoints;
       return (
         <div id="protograph_div" className="protograph-col16-mode">
           <div
@@ -160,16 +160,16 @@ export default class toCluster extends React.Component {
             >
               <div>
                 <div className="large-label">
-                  {this.state.dataJSON.data.incidentChart.label1}{" "}
+                  {this.state.dataJSON.incidentChart.label1}{" "}
                   <span id="label2">
-                    {this.state.dataJSON.data.incidentChart.label2}
+                    {this.state.dataJSON.incidentChart.label2}
                   </span>{" "}
                   <span id="label3">
-                    {this.state.dataJSON.data.incidentChart.label3}
+                    {this.state.dataJSON.incidentChart.label3}
                   </span>
                 </div>{" "}
                 <div className="large-num">
-                  {this.state.dataJSON.data.incidentChart.incidentNumber}
+                  {this.state.dataJSON.incidentChart.incidentNumber}
                 </div>
               </div>
             </div>
@@ -179,20 +179,20 @@ export default class toCluster extends React.Component {
             <div className="number-chart" id="deathInjury">
               <div style={{ float: "left", display: "inline-block" }}>
                 <div className="small-label">
-                  {this.state.dataJSON.data.deathInjuryChart.deathLabel}
+                  {this.state.dataJSON.deathInjuryChart.deathLabel}
                 </div>
                 <br />
                 <div className="small-num" style={{ paddingLeft: "10px" }}>
-                  {this.state.dataJSON.data.deathInjuryChart.deathNumber}
+                  {this.state.dataJSON.deathInjuryChart.deathNumber}
                 </div>
               </div>
               <div style={{ float: "right" }}>
                 <div className="small-label">
-                  {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
+                  {this.state.dataJSON.deathInjuryChart.injuryLabel}
                 </div>
                 <br />
                 <div className="small-num">
-                  {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
+                  {this.state.dataJSON.deathInjuryChart.injuryNumber}
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@ export default class toCluster extends React.Component {
             }}
           >
             <div className="line-chart">
-              {this.state.dataJSON.data.leftLineChart.label} <br />
+              {this.state.dataJSON.leftLineChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -270,7 +270,7 @@ export default class toCluster extends React.Component {
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.data.middleLineChart.label} <br />
+              {this.state.dataJSON.middleLineChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -333,7 +333,7 @@ export default class toCluster extends React.Component {
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.data.rightLineChart.label} <br />
+              {this.state.dataJSON.rightLineChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"

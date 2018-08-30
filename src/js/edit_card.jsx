@@ -69,8 +69,7 @@ export default class editToCluster extends React.Component {
 
   onSubmitHandler({formData}) {
     if (typeof this.props.onPublishCallback === "function") {
-      let dataJSON = this.state.dataJSON;
-      this.setState({ publishing: true, dataJSON: dataJSON });
+      this.setState({ publishing: true });
       let publishCallback = this.props.onPublishCallback();
       publishCallback.then((message) => {
         this.setState({ publishing: false });
@@ -88,6 +87,7 @@ export default class editToCluster extends React.Component {
   }
 
   renderFormData() {
+    console.log(this.state.dataJSON);
     return this.state.dataJSON;
   }
 
@@ -137,7 +137,6 @@ export default class editToCluster extends React.Component {
                   formData={this.renderFormData()}
                   >
                   <br/>
-                  <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`}>xyz </a>
                   <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
                 </JSONSchemaForm>
               </div>
