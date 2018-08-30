@@ -31,6 +31,11 @@ ProtoGraph.Card.toCluster.prototype.renderCol3 = function (data) {
   this.render();
 }
 
+ProtoGraph.Card.toCluster.prototype.renderCol16 = function (data) {
+  this.mode = 'col16';
+  this.render();
+}
+
 ProtoGraph.Card.toCluster.prototype.renderScreenshot = function (data) {
   this.mode = 'screenshot';
   this.render();

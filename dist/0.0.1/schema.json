@@ -1,86 +1,189 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {},
-  "id": "http://example.com/example.json",
-  "properties": {
-    "data": {
-      "id": "/properties/data",
-      "properties": {
-        "section": {
-          "id": "/properties/data/properties/section",
-          "type": "string",
-          "title": "Section",
-          "default": ""
-        },
-        "title": {
-          "id": "/properties/data/properties/title",
-          "title": "Title",
-          "type": "string"
-        },
-        "published_date": {
-          "id": "/properties/data/properties/published_date",
-          "title": "Publised date",
-          "type": "string",
-          "format": "date-time"
-        },
-        "series":{
-          "title": "Series",
-          "type": "string",
-          "minLength":3,
-          "maxLength": 15
-        },
-        "links": {
-          "id": "/properties/data/properties/links",
-          "title": "Links",
-          "items": {
-            "id": "/properties/data/properties/links/items",
-            "title": "Link",
-            "hideTitle": true,
-            "separator": "#",
-            "properties": {
-              "link": {
-                "id": "/properties/data/properties/links/items/properties/link",
-                "default": "http://indianexpress.com",
-                "title": "Link",
-                "type": "string"
-              },
-              "favicon_url": {
-                "id": "/properties/data/properties/links/items/properties/favicon_url",
-                "default": "http://0.gravatar.com/blavatar/efe0300e7f891c5c802ed340f6b20b67?s=16",
-                "title": "Favicon URL",
-                "type": "string"
-              },
-              "publication_name": {
-                "id": "/properties/data/properties/links/items/properties/publication_name",
-                "default": "Indian Express",
-                "title": "Publication name",
-                "type": "string"
-              }
-            },
-            "required": [
-              "link"
-            ],
-            "minItems": 1,
-            "maxItems": 6,
-            "addButtonText": "Add a new link",
-            "type": "object"
-          },
-          "minItems": 1,
-          "maxItems": 6,
-          "type": "array"
-        },
-        "analysis": {
-          "id": "/properties/data/properties/analysis",
-          "title": "Analysis",
-          "type": "string",
-          "minLength": 300,
-          "maxLength": 390
-        }
-      },
-      "title": "Card Data",
-      "type": "object",
-      "required": ["title", "published_date"]
+	"$schema": "http://json-schema.org/draft-06/schema#",
+    "id": "http://example.com/example.json",
+    "type": "object",
+    "properties": {
+    	"data": {
+    		"id": "/properties/data",
+    		"type": "object",
+    		"properties": {
+    			"title": {
+    				"id": "/properties/data/properties/title",
+    				"type": "string",
+    				"title": "Title",
+    				"default": " "
+    			},
+	    		"description": {
+					"id": "/properties/data/properties/description",
+					"type": "string",
+					"title": "Description",
+					"maxLength": 400
+				},
+    			"incidentChart": {
+    				"id": "/properties/data/properties/incidentChart",
+    						"type": "object",
+    						"title": "Number of incidents",
+    						"properties": {
+    							"label": {
+    								"id": "/properties/data/properties/incidentChart/properties/label",
+    								"type": "string",
+    								"maxLength": 40,
+    								"title": "Label",
+    								"default": "Total no. of hate crimes"
+    							},
+    							"incidentNumber": {
+    								"id": "/properties/data/properties/incidentChart/properties/incidentNumber",
+    								"type": "integer",
+    								"title": "Number of incidents",
+    								"default": 257
+    							}
+    						}
+    			},
+    			"deathInjuryChart": {
+    				"id": "/properties/data/properties/deathInjuryChart",
+    						"type": "object",
+    						"title": "Deaths and injuries",
+    						"properties": {
+    							"deathLabel": {
+    								"id": "/properties/data/properties/deathInjuryChart/properties/deathLabel",
+    								"type": "string",
+    								"maxLength": 12,
+    								"title": "Label 1",
+    								"default": "Deaths"
+    							},
+    							"injuryLabel": {
+    								"id": "/properties/data/properties/deathInjuryChart/properties/injuryLabel",
+    								"type": "string",
+    								"maxLength": 12,
+    								"title": "Label 2",
+    								"default": "Injuries"
+    							},
+    							"deathNumber": {
+    								"id": "/properties/data/properties/deathInjuryChart/properties/deathNumber",
+    								"type": "integer",
+    								"title": "Number 1",
+    								"default": 92
+    							},
+    							"injuryNumber": {
+    								"id": "/properties/data/properties/deathInjuryChart/properties/injuryNumber",
+    								"type": "integer",
+    								"title": "Number 2",
+    								"default": 550
+    							}
+    						}
+    			},
+    			"leftLineChart": {
+					"id": "/properties/data/properties/leftLineChart",
+					"type": "object",
+					"title": "Left line chart",
+					"properties": {
+						"label": {
+							"id": "/properties/data/properties/leftLineChart/properties/label",
+							"type": "string",
+							"title": "Label",
+							"maxLength": 40,
+							"default": "Religion of victims"
+						},
+						"datapoints": {
+							"id": "/properties/data/properties/leftLineChart/properties/datapoints",
+							"type": "array",
+							"title": "Data points",
+							"minItems": 4,
+							"maxItems": 4,
+							"items": {
+								"id": "/properties/data/properties/leftLineChart/properties/datapoints/items",
+								"type": "object",
+								"properties": {
+									"category": {
+										"id": "/properties/data/properties/leftLineChart/properties/datapoints/items/properties/category",
+										"type": "string",
+										"title": "Category"
+									},
+									"percentage": {
+										"id": "/properties/data/properties/leftLineChart/properties/datapoints/items/properties/percentage",
+										"type": "string",
+										"title": "Percentage"
+									}
+								}								
+							}
+						}
+					}
+				},
+				"middleLineChart": {
+					"id": "/properties/data/properties/middleLineChart",
+					"type": "object",
+					"title": "Middle line chart",
+					"properties": {
+						"label": {
+							"id": "/properties/data/properties/middleLineChart/properties/label",
+							"type": "string",
+							"title": "Label",
+							"maxLength": 40,
+							"default": "Religion of perpetrators"
+						},
+						"datapoints": {
+							"id": "/properties/data/properties/middleLineChart/properties/datapoints",
+							"type": "array",
+							"title": "Data points",
+							"minItems": 4,
+							"maxItems": 4,
+							"items": {
+								"id": "/properties/data/properties/middleLineChart/properties/datapoints/items",
+								"properties": {
+									"category": {
+										"id": "/properties/data/properties/middleLineChart/properties/datapoints/items/properties/category",
+										"type": "string",
+										"title": "Category"
+									},
+									"percentage": {
+										"id": "/properties/data/properties/middleLineChart/properties/datapoints/items/properties/percentage",
+										"type": "string",
+										"title": "Percentage"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				},
+				"rightLineChart": {
+					"id": "/properties/data/properties/rightLineChart",
+					"type": "object",
+					"title": "Right line chart",
+					"properties": {
+						"label": {
+							"id": "/properties/data/properties/rightLineChart/properties/label",
+							"type": "string",
+							"title": "Label",
+							"maxLength": 40,
+							"default": "Party in power"
+						},
+						"datapoints": {
+							"id": "/properties/data/properties/rightLineChart/properties/datapoints",
+							"type": "array",
+							"minItems": 4,
+							"maxItems": 4,
+							"title": "Data points",
+							"items": {
+								"type": "object",
+								"id": "/properties/data/properties/rightLineChart/properties/datapoints/items",
+								"properties": {
+									"category": {
+										"id": "/properties/data/properties/rightLineChart/properties/datapoints/items/properties/category",
+										"type": "string",
+										"title": "Category"
+									},
+									"percentage": {
+										"id": "/properties/data/properties/rightLineChart/properties/datapoints/items/properties/percentage",
+										"type": "string",
+										"title": "Percentage"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+    	}
     }
-  },
-  "type": "object"
 }
