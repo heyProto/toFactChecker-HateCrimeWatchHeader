@@ -7,12 +7,6 @@
     		"id": "/properties/data",
     		"type": "object",
     		"properties": {
-    			"title": {
-    				"id": "/properties/data/properties/title",
-    				"type": "string",
-    				"title": "Title",
-    				"default": " "
-    			},
 	    		"description": {
 					"id": "/properties/data/properties/description",
 					"type": "string",
@@ -24,18 +18,13 @@
     						"type": "object",
     						"title": "Number of incidents",
     						"properties": {
-    							"label": {
-    								"id": "/properties/data/properties/incidentChart/properties/label",
-    								"type": "string",
-    								"maxLength": 40,
-    								"title": "Label",
-    								"default": "Total no. of hate crimes"
-    							},
     							"incidentNumber": {
     								"id": "/properties/data/properties/incidentChart/properties/incidentNumber",
     								"type": "integer",
     								"title": "Number of incidents",
-    								"default": 257
+    								"default": 257,
+    								"minimum": 1,
+    								"maximum": 999
     							}
     						}
     			},
@@ -48,27 +37,31 @@
     								"id": "/properties/data/properties/deathInjuryChart/properties/deathLabel",
     								"type": "string",
     								"maxLength": 12,
-    								"title": "Label 1",
+    								"title": "Label for deaths",
     								"default": "Deaths"
     							},
     							"injuryLabel": {
     								"id": "/properties/data/properties/deathInjuryChart/properties/injuryLabel",
     								"type": "string",
     								"maxLength": 12,
-    								"title": "Label 2",
+    								"title": "Label for injuries",
     								"default": "Injuries"
     							},
     							"deathNumber": {
     								"id": "/properties/data/properties/deathInjuryChart/properties/deathNumber",
     								"type": "integer",
-    								"title": "Number 1",
-    								"default": 92
+    								"title": "Number of deaths",
+    								"default": 92,
+    								"minimum": 1,
+    								"maximum": 999
     							},
     							"injuryNumber": {
     								"id": "/properties/data/properties/deathInjuryChart/properties/injuryNumber",
     								"type": "integer",
-    								"title": "Number 2",
-    								"default": 550
+    								"title": "Number of injuries",
+    								"default": 550,
+    								"minimum": 1,
+    								"maximum": 999
     							}
     						}
     			},

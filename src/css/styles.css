@@ -38,12 +38,12 @@ body {
 
 .number-chart {
   height: 60%;
-  width: 30%;
+  width: 380px;
   display: inline-block;
   padding: 10px;
   padding-top: 3%;
   vertical-align: top;
-  margin-left: 2.5%;
+  margin-left: 32.5px;
 }
 
 .line-chart {
@@ -106,7 +106,7 @@ body {
   display: inline-block;
   text-transform: uppercase;
   align-content: center;
-  padding-left: 20px;
+  padding-left: 22.5%;
 }
 
 .small-num {
@@ -172,7 +172,7 @@ body {
 }
 
 .protograph-col4-mode {
-  height: auto;
+  height: 430px;
   width: 320px;
   background-image: radial-gradient(circle at 50% 54%, #000000, #793131);
   position: absolute;
@@ -180,33 +180,33 @@ body {
   left: 0;
 }
 
-@media only screen and (max-width: 400px) {
-  #label2 {
+  #label2.col-4-mode {
     display: inline-block;
     font-size: 22px;
     letter-spacing: 1px;
     line-height: 0;
   }
 
-  .large-label {
+  .large-label.col-4-mode {
     width: 100%;
     text-align: center;
     font-size: 10px;
   }
 
-  .large-num {
+  .large-num.col-4-mode {
     font-size: 70px;
     font-weight: 800;
     width: 100%;
     text-align: center;
   }
 
-  .small-label {
+  .small-label.col-4-mode {
     font-size: 10px;
   }
 
-  #description {
+  #description.col-4-mode {
     width: 80%;
+    height: 30%;
     margin: auto;
     text-align: center;
     font-size: 12px;
@@ -214,14 +214,14 @@ body {
     line-height: 1.7;
   }
 
-  #incidentChart {
+  #incidentChart.col-4-mode {
     width: 60%;
     margin: auto;
     z-index: 1;
     position: relative;
   }
 
-  #deathInjuryChart {
+  #deathInjuryChart.col-4-mode {
     width: 70%;
     margin: auto;
     margin-top: 10%;
@@ -229,7 +229,7 @@ body {
     position: relative;
   }
 
-  .small-num {
+  .small-num.col-4-mode {
     font-size: 50px;
   }
 
@@ -237,4 +237,10 @@ body {
     position: absolute;
     overflow: hidden;
   }
-}
+  
+  .container.col-4-mode {
+    height: auto;
+    overflow: auto;
+    padding-top:7px;
+    width: 320px;
+  }

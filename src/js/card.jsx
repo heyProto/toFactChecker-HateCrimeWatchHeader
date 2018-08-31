@@ -85,21 +85,21 @@ export default class toCluster extends React.Component {
               style={{ width: "70%", height: "70%" }}
             />
           </div>
-          <div className="container" id="incidentChart">
-            <div className="large-label">
+          <div className="container col-4-mode" id="incidentChart">
+            <div className="large-label col-4-mode">
               {this.state.dataJSON.incidentChart.label1}
             </div>
             <br />
-            <div id="label2" className="large-label">
+            <div id="label2" className="large-label col-4-mode">
               {this.state.dataJSON.incidentChart.label2}{" "}
               {this.state.dataJSON.incidentChart.label3}
             </div>
             <br />
-            <div className="large-num">
+            <div className="large-num col-4-mode">
               {this.state.dataJSON.incidentChart.incidentNumber}
             </div>
           </div>
-          <div className="container" id="description">
+          <div className="container col-4-mode" id="description">
             {this.state.dataJSON.description}
           </div>
           <div className="bg" style={{ right: "-70px", bottom: "0px" }}>
@@ -108,25 +108,25 @@ export default class toCluster extends React.Component {
               style={{ width: "70%", height: "70%" }}
             />
           </div>
-          <div className="container" id="deathInjuryChart">
-            <div id="deaths" style={{ display: "inline-block", float: "left" }}>
-              <div className="small-label">
+          <div className="container col-4-mode" id="deathInjuryChart">
+            <div id="deaths" style={{ display: "inline-block", float: "left", paddingLeft: '10px' }}>
+              <div className="small-label col-4-mode">
                 {this.state.dataJSON.deathInjuryChart.deathLabel}
               </div>
               <br />
-              <div className="small-num" style={{ paddingLeft: "15px" }}>
+              <div className="small-num col-4-mode" style={{ paddingLeft: "10px" }}>
                 {this.state.dataJSON.deathInjuryChart.deathNumber}
               </div>
             </div>
             <div
               id="injuries"
-              style={{ display: "inline-block", float: "right" }}
+              style={{ display: "inline-block", float: "right", paddingRight: '10px' }}
             >
-              <div className="small-label">
+              <div className="small-label col-4-mode">
                 {this.state.dataJSON.deathInjuryChart.injuryLabel}
               </div>
               <br />
-              <div className="small-num" style={{ paddingLeft: "5px" }}>
+              <div className="small-num col-4-mode" style={{ paddingLeft: "5px" }}>
                 {this.state.dataJSON.deathInjuryChart.injuryNumber}
               </div>
             </div>
