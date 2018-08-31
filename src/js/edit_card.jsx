@@ -4,7 +4,7 @@ import axios from 'axios';
 import Card from './card.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
-export default class editToCluster extends React.Component {
+export default class editHCW extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

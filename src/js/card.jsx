@@ -14,7 +14,7 @@ class SpanRenderer extends React.Component {
   }
 }
 
-export default class toCluster extends React.Component {
+export default class HCW extends React.Component {
   constructor(props) {
     super(props);
     let stateVar = {

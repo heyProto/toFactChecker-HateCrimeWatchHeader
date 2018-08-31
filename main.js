@@ -6,42 +6,29 @@ window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
 
 
-ProtoGraph.Card.toCluster = function () {
+ProtoGraph.Card.HCW = function () {
   this.cardType = 'ClusterCard';
 }
 
-ProtoGraph.Card.toCluster.prototype.init = function (options) {
+ProtoGraph.Card.HCW.prototype.init = function (options) {
   this.options = options;
 }
 
-ProtoGraph.Card.toCluster.prototype.getData = function (data) {
+ProtoGraph.Card.HCW.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.toCluster.prototype.renderCol7 = function (data) {
-  this.mode = 'col7';
-  this.render();
-}
-ProtoGraph.Card.toCluster.prototype.renderCol4 = function (data) {
+ProtoGraph.Card.HCW.prototype.renderCol4 = function (data) {
   this.mode = 'col4';
   this.render();
 }
-ProtoGraph.Card.toCluster.prototype.renderCol3 = function (data) {
-  this.mode = 'col3';
-  this.render();
-}
 
-ProtoGraph.Card.toCluster.prototype.renderCol16 = function (data) {
+ProtoGraph.Card.HCW.prototype.renderCol16 = function (data) {
   this.mode = 'col16';
   this.render();
 }
 
-ProtoGraph.Card.toCluster.prototype.renderScreenshot = function (data) {
-  this.mode = 'screenshot';
-  this.render();
-}
-
-ProtoGraph.Card.toCluster.prototype.render = function () {
+ProtoGraph.Card.HCW.prototype.render = function () {
   ReactDOM.render(
     <Card
       dataURL={this.options.data_url}
