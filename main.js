@@ -7,7 +7,7 @@ window.ProtoGraph.Card = window.ProtoGraph.Card || {};
 
 
 ProtoGraph.Card.HCW = function () {
-  this.cardType = 'ClusterCard';
+  this.cardType = 'HCWCard';
 }
 
 ProtoGraph.Card.HCW.prototype.init = function (options) {

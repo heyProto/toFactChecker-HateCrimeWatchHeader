@@ -87,7 +87,6 @@ export default class editHCW extends React.Component {
   }
 
   renderFormData() {
-    console.log(this.state.dataJSON);
     return this.state.dataJSON;
   }
 

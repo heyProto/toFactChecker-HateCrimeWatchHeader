@@ -96,7 +96,7 @@ export default class HCW extends React.Component {
             </div>
             <br />
             <div className="large-num col-4-mode">
-              {this.state.dataJSON.incidentChart.incidentNumber}
+            	{this.state.dataJSON.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
             </div>
           </div>
           <div className="container col-4-mode" id="description">
@@ -143,6 +143,13 @@ export default class HCW extends React.Component {
       let leftChartItems = this.state.dataJSON.leftLineChart.datapoints;
       let middleChartItems = this.state.dataJSON.middleLineChart.datapoints;
       let rightChartItems = this.state.dataJSON.rightLineChart.datapoints;
+      let leftChartSum = 0, middleChartSum = 0, rightChartSum = 0;
+      let chartWidth = 350;
+      for (let i = 0; i < leftChartItems.length; i++) {
+      	leftChartSum += leftChartItems[i].percentage;
+      	middleChartSum += middleChartItems[i].percentage;
+      	rightChartSum += rightChartItems[i].percentage;
+      }
       return (
         <div id="protograph_div" className="protograph-col16-mode">
           <div
@@ -169,7 +176,7 @@ export default class HCW extends React.Component {
                   </span>
                 </div>{" "}
                 <div className="large-num">
-                  {this.state.dataJSON.incidentChart.incidentNumber}
+                  {this.state.dataJSON.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
                 </div>
               </div>
             </div>
@@ -213,56 +220,56 @@ export default class HCW extends React.Component {
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(253, 0, 0, 0.8)",
-                    width: leftChartItems[0].percentage * 3
+                    width: (leftChartItems[0].percentage/leftChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(127, 0, 0, 0.8)",
-                    width: leftChartItems[1].percentage * 3
+                    width: (leftChartItems[1].percentage/leftChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(85, 0, 2, 0.8)",
-                    width: leftChartItems[2].percentage * 3
+                    width: (leftChartItems[2].percentage/leftChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: leftChartItems[3].percentage * 3
+                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth
                   }}
                 />
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{ width: leftChartItems[0].percentage * 3 }}
+                  style={{ width: (leftChartItems[0].percentage/leftChartSum) * chartWidth }}
                 >
                   {leftChartItems[0].category} <br />{" "}
                   {leftChartItems[0].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: leftChartItems[1].percentage * 3 }}
+                  style={{ width: (leftChartItems[1].percentage/leftChartSum) * chartWidth }}
                 >
                   {leftChartItems[1].category} <br />{" "}
                   {leftChartItems[1].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: leftChartItems[2].percentage * 3 }}
+                  style={{ width: (leftChartItems[2].percentage/leftChartSum) * chartWidth }}
                 >
                   {leftChartItems[2].category} <br />{" "}
                   {leftChartItems[2].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: leftChartItems[3].percentage * 3 }}
+                  style={{ width: (leftChartItems[3].percentage/leftChartSum) * chartWidth }}
                 >
                   {leftChartItems[3].category} <br />{" "}
                   {leftChartItems[3].percentage}%
@@ -276,56 +283,56 @@ export default class HCW extends React.Component {
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(253, 0, 0, 0.8)",
-                    width: middleChartItems[0].percentage * 3
+                    width: (middleChartItems[0].percentage/middleChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(127, 0, 0, 0.8)",
-                    width: middleChartItems[1].percentage * 3
+                    width: (middleChartItems[1].percentage/middleChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(85, 0, 2, 0.8)",
-                    width: middleChartItems[2].percentage * 3
+                    width: (middleChartItems[2].percentage/middleChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: middleChartItems[3].percentage * 3
+                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth
                   }}
                 />
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{ width: middleChartItems[0].percentage * 3 }}
+                  style={{ width: (middleChartItems[0].percentage/middleChartSum) * chartWidth }}
                 >
                   {middleChartItems[0].category} <br />{" "}
                   {middleChartItems[0].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: middleChartItems[1].percentage * 3 }}
+                  style={{ width: (middleChartItems[1].percentage/middleChartSum) * chartWidth }}
                 >
                   {middleChartItems[1].category} <br />{" "}
                   {middleChartItems[1].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: middleChartItems[2].percentage * 3 }}
+                  style={{ width: (middleChartItems[2].percentage/middleChartSum) * chartWidth }}
                 >
                   {middleChartItems[2].category} <br />{" "}
                   {middleChartItems[2].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: middleChartItems[3].percentage * 3 }}
+                  style={{ width: (middleChartItems[3].percentage/middleChartSum) * chartWidth }}
                 >
                   {middleChartItems[3].category} <br />{" "}
                   {middleChartItems[3].percentage}%
@@ -339,56 +346,56 @@ export default class HCW extends React.Component {
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(253, 0, 0, 0.8)",
-                    width: rightChartItems[0].percentage * 3
+                    width: (rightChartItems[0].percentage/rightChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(127, 0, 0, 0.8)",
-                    width: rightChartItems[1].percentage * 3
+                    width: (rightChartItems[1].percentage/rightChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(85, 0, 2, 0.8)",
-                    width: rightChartItems[2].percentage * 3
+                    width: (rightChartItems[2].percentage/rightChartSum) * chartWidth
                   }}
                 />
                 <span
                   className="chart-span"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: rightChartItems[3].percentage * 3
+                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth
                   }}
                 />
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{ width: rightChartItems[0].percentage * 3 }}
+                  style={{ width: (rightChartItems[0].percentage/rightChartSum) * chartWidth }}
                 >
                   {rightChartItems[0].category} <br />{" "}
                   {rightChartItems[0].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: rightChartItems[1].percentage * 3 }}
+                  style={{ width: (rightChartItems[1].percentage/rightChartSum) * chartWidth }}
                 >
                   {rightChartItems[1].category} <br />{" "}
                   {rightChartItems[1].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: rightChartItems[2].percentage * 3 }}
+                  style={{ width: (rightChartItems[2].percentage/rightChartSum) * chartWidth }}
                 >
                   {rightChartItems[2].category} <br />{" "}
                   {rightChartItems[2].percentage}%
                 </span>
                 <span
                   className="chart-label"
-                  style={{ width: rightChartItems[3].percentage * 3 }}
+                  style={{ width: (rightChartItems[3].percentage/rightChartSum) * chartWidth }}
                 >
                   {rightChartItems[3].category} <br />{" "}
                   {rightChartItems[3].percentage}%
