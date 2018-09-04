@@ -1,0 +1,7 @@
+{
+	"incidentChart": {
+		"incidentNumber": {
+		"ui:help": "< 1000"
+		}
+	}
+}

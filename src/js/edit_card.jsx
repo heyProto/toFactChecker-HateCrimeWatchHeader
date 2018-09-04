@@ -12,7 +12,8 @@ export default class editHCW extends React.Component {
       mode: "col16",
       publishing: false,
       schemaJSON: undefined,
-      fetchingData: true,
+      uiSchemaJSON: undefined,
+      fetchingData: true
     }
     this.toggleMode = this.toggleMode.bind(this);
     this.formValidator = this.formValidator.bind(this);
@@ -21,7 +22,8 @@ export default class editHCW extends React.Component {
   exportData() {
     let getDataObj = {
       dataJSON: this.state.dataJSON,
-      schemaJSON: this.state.schemaJSON
+      schemaJSON: this.state.schemaJSON,
+      uiSchemaJSON: this.state.uiSchemaJSON
     }
     return getDataObj;
   }
@@ -31,13 +33,15 @@ export default class editHCW extends React.Component {
     if (this.state.fetchingData){
       axios.all([
         axios.get(this.props.dataURL),
-        axios.get(this.props.schemaURL)
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.uiSchemaURL)
       ])
-      .then(axios.spread((card, schema) => {
+      .then(axios.spread((card, schema, uiSchema) => {
         let stateVars = {
           fetchingData: false,
           dataJSON: card.data,
-          schemaJSON: schema.data
+          schemaJSON: schema.data,
+          uiSchemaJSON: uiSchema.data
         }
 
         this.setState(stateVars);
@@ -63,7 +67,8 @@ export default class editHCW extends React.Component {
     return (<Card
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
-                    schemaJSON={this.state.schemaJSON}
+                    schemaJSON={this.state.schemaJSON} 
+                    uiSchemaJSON={this.state.uiSchemaJSON}
                   />)
   }
 
@@ -133,7 +138,8 @@ export default class editHCW extends React.Component {
                   onSubmit={((e) => this.onSubmitHandler(e))}
                   onChange={((e) => this.onChangeHandler(e))}
                   validate={this.formValidator}
-                  formData={this.renderFormData()}
+                  formData={this.renderFormData()} 
+                  uiSchema={this.state.uiSchemaJSON}
                   >
                   <br/>
                   <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>

@@ -23,7 +23,6 @@
     								"type": "integer",
     								"title": "Number of incidents",
     								"default": 257,
-    								"minimum": 1,
     								"maximum": 999
     							}
     						}
