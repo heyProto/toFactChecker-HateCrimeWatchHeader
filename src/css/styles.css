@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: Avenir-Bold;
-  src: url("https://cdn.protograph.pykih.com/lib/AEH.ttf") format("opentype");
+  src: url("https://cdn.protograph.pykih.com/lib/AEH.ttf") format("truetype");
 }
 
 body {
@@ -40,6 +40,7 @@ body {
 .top-divs {
   position: absolute;
   top: 10%;
+  width: 100%;
 }
 
 .bottom-divs {
@@ -53,10 +54,9 @@ body {
   height: 60%;
   width: 380px;
   display: inline-block;
-  padding: 10px;
   padding-top: 3%;
   vertical-align: top;
-  margin-left: 32.5px;
+  margin-left: 3%;
 }
 
 .line-chart {
@@ -66,10 +66,6 @@ body {
   font-family: AvenirLTStd-Book;
   font-size: 12px;
   font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
   color: #ffffff;
   vertical-align: bottom;
   margin-left: 3%;
@@ -77,7 +73,7 @@ body {
 }
 
 .large-num {
-  font-family: AvenirLTStd-Book;
+  font-family: Avenir-Bold;
   font-size: 125px;
   font-weight: 900;
   font-style: normal;
@@ -94,7 +90,7 @@ body {
   width: 128px;
   display: inline-block;
   text-transform: uppercase;
-  font-family: AvenirLTStd-Book;
+  font-family: Avenir-Bold;
   font-size: 16px;
   font-weight: 450;
   font-style: normal;
@@ -108,7 +104,7 @@ body {
 
 .small-label {
   width: 16.5%;
-  font-family: AvenirLTStd-Book;
+  font-family: Avenir-Bold;
   font-size: 16px;
   font-weight: 450;
   font-style: normal;
@@ -123,7 +119,7 @@ body {
 }
 
 .small-num {
-  font-family: AvenirLTStd-Book;
+  font-family: Avenir-Bold;
   font-size: 80px;
   font-weight: 900;
   font-style: normal;
@@ -149,7 +145,6 @@ body {
   height: 50px;
   display: inline-block;
   color: #fff;
-  padding: 6px;
   font-family: "Lato";
   line-height: 1.5;
 }
