@@ -1,4 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Lato");
+@font-face {
+  font-family: AvenirLTStd-Book;
+  src: url("https://cdn.protograph.pykih.com/lib/AvenirLTStd-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: AvenirLTStd-Medium;
+  src: url("https://cdn.protograph.pykih.com/lib/AvenirLTStd-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Avenir-Bold;
+  src: url("https://cdn.protograph.pykih.com/lib/AEH.ttf") format("opentype");
+}
 
 body {
   min-width: initial !important;
