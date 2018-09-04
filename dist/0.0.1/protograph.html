@@ -39,7 +39,7 @@
 
       x.init({
         selector: document.querySelector('#HCW_card'),
-        data_url: data_base_path + "/data.json",
+        data_url: "./sample.json",// data_base_path + "/data.json",
         domain: domain_name,
         site_config_url: base_url + '/header.json'
       })
@@ -47,17 +47,14 @@
     }
 
     function renderWithMode(mode) {
-      switch (mode) {
-        case "col7":
-          x.renderCol7();
-          break;
+      switch(mode){
         case "col4":
           x.renderCol4();
           break;
-        case "col3":
-        default:
-          x.renderCol3();
-          break;
+        case "col16":
+        default: 
+          x.renderCol16();
+          break;  
       }
     }
     </script>

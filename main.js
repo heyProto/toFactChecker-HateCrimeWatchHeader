@@ -36,6 +36,7 @@ ProtoGraph.Card.HCW.prototype.render = function () {
       siteConfigs={this.options.site_configs}
       siteConfigURL={this.options.site_config_url}
       mode={this.mode}
+      selector={this.options.selector}
       ref={(e) => {
         this.containerInstance = this.containerInstance || e;
       }} />,

@@ -4,12 +4,11 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hate Crime Watch</title>
-    <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="card.min.css">
   </head>
   <body style="margin:0px">
     <div id="HCW_card"></div>
-    <script src="cdn.protograph.pykih.com/lib/protograph-core.min.js"></script>
+    <script src="https://cdn.protograph.pykih.com/lib/protograph-core.min.js"></script>
     <script src = "card.min.js"></script>
     <script type="text/javascript">
     var x = new ProtoGraph.Card.HCW();
@@ -35,14 +34,14 @@
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
         receive: function(mode, options) {
-          if(typeof (view_cast_id) !== 'undefined'){
+          if(1==1 || typeof (view_cast_id) !== 'undefined'){
             var that = this,
               data_base_path = base_url + "/" + view_cast_id,
               params;
 
             params = {
               selector: document.querySelector('#HCW_card'),
-              data_url: data_base_path + "/data.json"
+              data_url: "./sample.json"// data_base_path + "/data.json"
             }
 
             if (options && options.headerJSON) {
@@ -88,15 +87,13 @@
 
     function renderWithMode(mode) {
       switch(mode){
-        case "col7":
-          x.renderCol7();
-          break;
         case "col4":
           x.renderCol4();
           break;
-        case "col3":
-          x.renderCol3();
-          break;
+        case "col16":
+        default: 
+          x.renderCol16();
+          break;  
       }
     }
 
