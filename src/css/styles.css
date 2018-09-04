@@ -145,7 +145,7 @@ body {
   height: 50px;
   display: inline-block;
   color: #fff;
-  font-family: "Lato";
+  font-family: "AvenirLTStd-Book";
   line-height: 1.5;
 }
 
@@ -251,4 +251,9 @@ body {
     overflow: auto;
     padding-top:7px;
     width: 320px;
+  }
+
+  #HCW_card {
+    overflow: hidden;
+    height: 430px;
   }

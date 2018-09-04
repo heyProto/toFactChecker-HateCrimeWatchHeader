@@ -81,7 +81,7 @@ export default class HCW extends React.Component {
         <div id="protograph_div" className="protograph-col4-mode">
           <div className="bg" style={{ left: "0px", top: "0px" }}>
             <img
-              src="dist/0.0.1/glass-2-1x.png"
+              src="https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-2-1x.png"
               style={{ width: "70%", height: "70%" }}
             />
           </div>
@@ -104,7 +104,7 @@ export default class HCW extends React.Component {
           </div>
           <div className="bg" style={{ right: "-70px", bottom: "0px" }}>
             <img
-              src="dist/0.0.1/glass-1-1x.png"
+              src="https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-1-1x.png"
               style={{ width: "70%", height: "70%" }}
             />
           </div>
@@ -155,7 +155,7 @@ export default class HCW extends React.Component {
           <div
             className="top-divs"
             style={{
-              backgroundImage: "url('dist/0.0.1/glass-2-1x.png')",
+              backgroundImage: "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-2-1x.png')",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "top left"
             }}
@@ -208,7 +208,7 @@ export default class HCW extends React.Component {
           <div
             className="bottom-divs"
             style={{
-              backgroundImage: "url('dist/0.0.1/glass-1-1x.png')",
+              backgroundImage: "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-1-1x.png')",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "720px -20px"
             }}
