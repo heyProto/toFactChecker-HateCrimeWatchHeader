@@ -142,11 +142,15 @@ body {
 }
 
 .chart-label {
-  height: 50px;
+  width: 25%;
+  height: auto;
   display: inline-block;
   color: #fff;
   font-family: "AvenirLTStd-Book";
   line-height: 1.5;
+  vertical-align: top;
+  align-content: center;
+
 }
 
 .labels {
@@ -186,6 +190,32 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.chart-label1, .chart-label2, .chart-label3, .chart-label4{
+  width: 35px;
+  margin-bottom: 3px;
+  text-align: center;
+  padding: 3px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px #424242;
+}
+
+.chart-label1 {
+   background-color: rgba(253, 0, 0, 0.8) 
+}
+
+.chart-label2 {
+  background-color: rgba(127, 0, 0, 0.8)
+}
+
+.chart-label3 {
+  background-color: rgba(85, 0, 2, 0.8);
+}
+
+.chart-label4 {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
 }
 
   #label2.col-4-mode {

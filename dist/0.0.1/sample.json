@@ -3,32 +3,32 @@
 		"label1": "Incidents of",
 		"label2": "hate",
 		"label3": "crime",
-		"incidentNumber": 257
+		"incidentNumber": 240
 	},
 	"deathInjuryChart": {
 		"deathLabel": "deaths",
 		"injuryLabel": "injuries",
-		"deathNumber": 92,
-		"injuryNumber": 550
+		"deathNumber": 87,
+		"injuryNumber": 560
 	},
 	"leftLineChart": {
 		"label": "Religion of victims",
 		"datapoints": [
 				{
-					"category": "Hindu",
-					"percentage": 40
-				},
-				{
 					"category": "Muslim",
-					"percentage": 32
+					"percentage": 61
 				},
 				{
-					"category": "Sikh",
-					"percentage": 26
+					"category": "Christian",
+					"percentage": 13
 				},
 				{
-					"category": "Unknown",
-					"percentage": 20
+					"category": "Hindu",
+					"percentage": 12
+				},
+				{
+					"category": "Others",
+					"percentage": 14
 				}
 			]
 	},
@@ -37,42 +37,38 @@
 		"datapoints": [
 				{
 					"category": "Hindu",
-					"percentage": 40
+					"percentage": 58
 				},
 				{
 					"category": "Muslim",
-					"percentage": 32
-				},
-				{
-					"category": "Sikh",
-					"percentage": 26
+					"percentage": 9
 				},
 				{
 					"category": "Unknown",
-					"percentage": 20
+					"percentage": 33
 				}
 			]
 	},
 	"rightLineChart": {
-		"label": "Party in power",
+		"label": "Pretext/bias indicator",
 		"datapoints": [
 				{
-					"category": "BJP",
-					"percentage": 40
+					"category": "Cow protection",
+					"percentage": 30
 				},
 				{
-					"category": "INC",
-					"percentage": 32
+					"category": "Interfaith relationship",
+					"percentage": 15
 				},
 				{
-					"category": "AAP",
-					"percentage": 26
+					"category": "Insult to religion",
+					"percentage": 10
 				},
 				{
-					"category": "Other",
-					"percentage": 20
+					"category": "Others",
+					"percentage": 45
 				}
 			]
 	},
-	"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"description": "As national crime data do not distinguish between violent crime and crime motivated by religious hatred, Hate Crime Watch is the first statistical perspective to a growing phenomenon of such violence."
 }

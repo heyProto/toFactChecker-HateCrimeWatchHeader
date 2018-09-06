@@ -80,7 +80,7 @@
 							"id": "/properties/data/properties/leftLineChart/properties/datapoints",
 							"type": "array",
 							"title": "Data points",
-							"minItems": 4,
+							"minItems": 3,
 							"maxItems": 4,
 							"items": {
 								"id": "/properties/data/properties/leftLineChart/properties/datapoints/items",
@@ -117,7 +117,7 @@
 							"id": "/properties/data/properties/middleLineChart/properties/datapoints",
 							"type": "array",
 							"title": "Data points",
-							"minItems": 4,
+							"minItems": 3,
 							"maxItems": 4,
 							"items": {
 								"id": "/properties/data/properties/middleLineChart/properties/datapoints/items",
@@ -153,7 +153,7 @@
 						"datapoints": {
 							"id": "/properties/data/properties/rightLineChart/properties/datapoints",
 							"type": "array",
-							"minItems": 4,
+							"minItems": 3,
 							"maxItems": 4,
 							"title": "Data points",
 							"items": {
