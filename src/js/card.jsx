@@ -140,9 +140,9 @@ export default class HCW extends React.Component {
     if (this.state.fetchingData) {
       return <div>Loading</div>;
     } else {
-      let leftChartItems = this.state.dataJSON.leftLineChart.datapoints;
-      let middleChartItems = this.state.dataJSON.middleLineChart.datapoints;
-      let rightChartItems = this.state.dataJSON.rightLineChart.datapoints;
+      let leftChartItems = this.state.dataJSON.leftChart.datapoints;
+      let middleChartItems = this.state.dataJSON.middleChart.datapoints;
+      let rightChartItems = this.state.dataJSON.rightChart.datapoints;
       let chartWidth = 350;
       let leftChartSum = leftChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let middleChartSum = middleChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
@@ -214,7 +214,7 @@ export default class HCW extends React.Component {
             }}
           >
             <div className="line-chart">
-              {this.state.dataJSON.leftLineChart.label} <br />
+              {this.state.dataJSON.leftChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -243,7 +243,7 @@ export default class HCW extends React.Component {
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
                     width: (leftChartItems[3].percentage/leftChartSum) * chartWidth
                   }}
-                />): console.log('')}
+                />): ""}
               </div>
               <div className="labels">
                 <span
@@ -274,11 +274,11 @@ export default class HCW extends React.Component {
               >
                   <div className="chart-label4">{leftChartItems[3].percentage}%</div>
                   {leftChartItems[3].category} 
-                </span>) : console.log('')}
+                </span>) : ""}
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.middleLineChart.label} <br />
+              {this.state.dataJSON.middleChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -309,7 +309,7 @@ export default class HCW extends React.Component {
                     width: (middleChartItems[3].percentage/middleChartSum) * chartWidth
                   }}
                 />)
-                  :console.log('no')
+                  : ""
                 }
                 
               </div>
@@ -343,12 +343,12 @@ export default class HCW extends React.Component {
                 >
                   <div className="chart-label4">{middleChartItems[3].percentage}%</div>
                   {middleChartItems[3].category}
-                </span>) : (console.log('no'))}
+                </span>) : ""}
 
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.rightLineChart.label} <br />
+              {this.state.dataJSON.rightChart.label} <br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -377,7 +377,7 @@ export default class HCW extends React.Component {
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
                     width: (rightChartItems[3].percentage/rightChartSum) * chartWidth
                   }}
-                />) : (console.log(''))}
+                />) : ""}
               </div>
               <div className="labels">
                 <span
@@ -409,7 +409,7 @@ export default class HCW extends React.Component {
                 >
                   <div className="chart-label4">{rightChartItems[3].percentage}%</div>
                   {rightChartItems[3].category}
-                </span>) : (console.log(''))}
+                </span>) : ""}
               </div>
             </div>
           </div>

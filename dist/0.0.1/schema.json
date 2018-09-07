@@ -64,73 +64,75 @@
     							}
     						}
     			},
-    			"leftLineChart": {
-					"id": "/properties/data/properties/leftLineChart",
+    			"leftChart": {
+					"id": "/properties/data/properties/leftChart",
 					"type": "object",
-					"title": "Left line chart",
+					"title": "Left chart",
 					"properties": {
 						"label": {
-							"id": "/properties/data/properties/leftLineChart/properties/label",
+							"id": "/properties/data/properties/leftChart/properties/label",
 							"type": "string",
 							"title": "Label",
 							"maxLength": 40,
 							"default": "Religion of victims"
 						},
 						"datapoints": {
-							"id": "/properties/data/properties/leftLineChart/properties/datapoints",
+							"id": "/properties/data/properties/leftChart/properties/datapoints",
 							"type": "array",
 							"title": "Data points",
 							"minItems": 3,
 							"maxItems": 4,
 							"items": {
-								"id": "/properties/data/properties/leftLineChart/properties/datapoints/items",
+								"id": "/properties/data/properties/leftChart/properties/datapoints/items",
 								"type": "object",
 								"properties": {
 									"category": {
-										"id": "/properties/data/properties/leftLineChart/properties/datapoints/items/properties/category",
+										"id": "/properties/data/properties/leftChart/properties/datapoints/items/properties/category",
 										"type": "string",
 										"title": "Category"
 									},
 									"percentage": {
-										"id": "/properties/data/properties/leftLineChart/properties/datapoints/items/properties/percentage",
+										"id": "/properties/data/properties/leftChart/properties/datapoints/items/properties/percentage",
 										"type": "integer",
-										"title": "Percentage"
+										"title": "Percentage",
+										"default": 0
 									}
 								}								
 							}
 						}
 					}
 				},
-				"middleLineChart": {
-					"id": "/properties/data/properties/middleLineChart",
+				"middleChart": {
+					"id": "/properties/data/properties/middleChart",
 					"type": "object",
-					"title": "Middle line chart",
+					"title": "Middle chart",
 					"properties": {
 						"label": {
-							"id": "/properties/data/properties/middleLineChart/properties/label",
+							"id": "/properties/data/properties/middleChart/properties/label",
 							"type": "string",
 							"title": "Label",
 							"maxLength": 40,
 							"default": "Religion of perpetrators"
 						},
 						"datapoints": {
-							"id": "/properties/data/properties/middleLineChart/properties/datapoints",
+							"id": "/properties/data/properties/middleChart/properties/datapoints",
 							"type": "array",
 							"title": "Data points",
 							"minItems": 3,
 							"maxItems": 4,
 							"items": {
-								"id": "/properties/data/properties/middleLineChart/properties/datapoints/items",
+								"id": "/properties/data/properties/middleChart/properties/datapoints/items",
 								"properties": {
 									"category": {
-										"id": "/properties/data/properties/middleLineChart/properties/datapoints/items/properties/category",
+										"id": "/properties/data/properties/middleChart/properties/datapoints/items/properties/category",
 										"type": "string",
 										"title": "Category"
 									},
 									"percentage": {
-										"id": "/properties/data/properties/middleLineChart/properties/datapoints/items/properties/percentage",
+										"id": "/properties/data/properties/middleChart/properties/datapoints/items/properties/percentage",
 										"type": "integer",
-										"title": "Percentage"
+										"title": "Percentage",
+										"default": 0
 									}
 								},
 								"type": "object"
@@ -138,37 +140,38 @@
 						}
 					}
 				},
-				"rightLineChart": {
-					"id": "/properties/data/properties/rightLineChart",
+				"rightChart": {
+					"id": "/properties/data/properties/rightChart",
 					"type": "object",
-					"title": "Right line chart",
+					"title": "Right chart",
 					"properties": {
 						"label": {
-							"id": "/properties/data/properties/rightLineChart/properties/label",
+							"id": "/properties/data/properties/rightChart/properties/label",
 							"type": "string",
 							"title": "Label",
 							"maxLength": 40,
 							"default": "Party in power"
 						},
 						"datapoints": {
-							"id": "/properties/data/properties/rightLineChart/properties/datapoints",
+							"id": "/properties/data/properties/rightChart/properties/datapoints",
 							"type": "array",
 							"minItems": 3,
 							"maxItems": 4,
 							"title": "Data points",
 							"items": {
 								"type": "object",
-								"id": "/properties/data/properties/rightLineChart/properties/datapoints/items",
+								"id": "/properties/data/properties/rightChart/properties/datapoints/items",
 								"properties": {
 									"category": {
-										"id": "/properties/data/properties/rightLineChart/properties/datapoints/items/properties/category",
+										"id": "/properties/data/properties/rightChart/properties/datapoints/items/properties/category",
 										"type": "string",
 										"title": "Category"
 									},
 									"percentage": {
-										"id": "/properties/data/properties/rightLineChart/properties/datapoints/items/properties/percentage",
+										"id": "/properties/data/properties/rightChart/properties/datapoints/items/properties/percentage",
 										"type": "integer",
-										"title": "Percentage"
+										"title": "Percentage",
+										"default": 0
 									}
 								}
 							}

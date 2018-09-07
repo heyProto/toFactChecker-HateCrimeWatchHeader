@@ -25,7 +25,15 @@ export default class editHCW extends React.Component {
       schemaJSON: this.state.schemaJSON,
       uiSchemaJSON: this.state.uiSchemaJSON
     }
+    getDataObj["name"] = getDataObj.dataJSON.data.incidentChart.label1 + ' ' + getDataObj.dataJSON.data.incidentChart.label2 + ' ' + getDataObj.dataJSON.data.incidentChart.label3;
     return getDataObj;
+  }
+
+  renderSEO() {
+    let data = this.state.dataJSON.data,
+      seo_blockquote;
+    seo_blockquote = `<blockquote>${data.description ? `<p>${data.description}</p>` : ""}</blockquote>`;
+    return seo_blockquote;
   }
 
   componentDidMount() {

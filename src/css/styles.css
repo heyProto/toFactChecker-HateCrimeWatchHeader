@@ -149,8 +149,8 @@ body {
   font-family: "AvenirLTStd-Book";
   line-height: 1.5;
   vertical-align: top;
-  align-content: center;
-
+  padding-right: 12px;
+  
 }
 
 .labels {
