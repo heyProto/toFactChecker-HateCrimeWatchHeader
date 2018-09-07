@@ -41,16 +41,16 @@
 				},
 				{
 					"category": "Muslim",
-					"percentage": 9
+					"percentage": 1
 				},
 				{
 					"category": "Unknown",
-					"percentage": 33
+					"percentage": 41
 				}
 			]
 	},
 	"rightChart": {
-		"label": "Pretext/Bias indicator",
+		"label": "Pretext / Bias indicator",
 		"datapoints": [
 				{
 					"category": "Cow protection",

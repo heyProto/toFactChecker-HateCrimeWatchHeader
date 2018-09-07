@@ -147,9 +147,7 @@ export default class HCW extends React.Component {
       let leftChartSum = leftChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let middleChartSum = middleChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let rightChartSum = rightChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
-      let leftWidth = parseInt(100/leftChartItems.length)+'%'
-      let middleWidth = parseInt(100/middleChartItems.length)+'%'
-      let rightWidth = parseInt(100/rightChartItems.length)+'%'
+      let labelWidth = '25%'
       return (
         <div id="protograph_div" className="protograph-col16-mode">
           <div
@@ -214,101 +212,103 @@ export default class HCW extends React.Component {
             }}
           >
             <div className="line-chart">
-              {this.state.dataJSON.leftChart.label} <br />
+              {this.state.dataJSON.leftChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(253, 0, 0, 0.8)",
+                    backgroundColor: "#ff0000",
                     width: (leftChartItems[0].percentage/leftChartSum) * chartWidth
                   }}
-                />
+                >{leftChartItems[0].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(127, 0, 0, 0.8)",
+                    backgroundColor: "#c40000",
                     width: (leftChartItems[1].percentage/leftChartSum) * chartWidth
                   }}
-                />
+                >{leftChartItems[1].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(85, 0, 2, 0.8)",
+                    backgroundColor: "#870000",
                     width: (leftChartItems[2].percentage/leftChartSum) * chartWidth
                   }}
-                />
+                >{leftChartItems[2].percentage}</span>
                 {(leftChartItems.length > 3) ? (<span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth
+                    backgroundColor: "#c8c8c8",
+                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth,
+                    color: "#000"
                   }}
-                />): ""}
+                >{leftChartItems[3].percentage}</span>): ""}
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: leftWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label1">{leftChartItems[0].percentage}%</div>
-                  {leftChartItems[0].category}
+                  <div className="chart-label1"></div>
+                  <div className="label-text">{leftChartItems[0].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: leftWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label2">{leftChartItems[1].percentage}%</div>
-                  {leftChartItems[1].category}
+                  <div className="chart-label2"></div>
+                  <div className="label-text">{leftChartItems[1].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: leftWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label3">{leftChartItems[2].percentage}%</div>
-                  {leftChartItems[2].category}
+                  <div className="chart-label3"></div>
+                  <div className="label-text">{leftChartItems[2].category}</div>
                   
                 </span>
                 {(leftChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: leftWidth}}
+                  style={{width: labelWidth}}
               >
-                  <div className="chart-label4">{leftChartItems[3].percentage}%</div>
-                  {leftChartItems[3].category} 
+                  <div className="chart-label4"></div>
+                  <div className="label-text">{leftChartItems[3].category}</div> 
                 </span>) : ""}
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.middleChart.label} <br />
+              {this.state.dataJSON.middleChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(253, 0, 0, 0.8)",
+                    backgroundColor: "#ff0000",
                     width: (middleChartItems[0].percentage/middleChartSum) * chartWidth
                   }}
-                />
+                >{middleChartItems[0].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(127, 0, 0, 0.8)",
+                    backgroundColor: "#c40000",
                     width: (middleChartItems[1].percentage/middleChartSum) * chartWidth
                   }}
-                />
+                >{middleChartItems[1].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(85, 0, 2, 0.8)",
+                    backgroundColor: "#870000",
                     width: (middleChartItems[2].percentage/middleChartSum) * chartWidth
                   }}
-                />
+                >{middleChartItems[2].percentage}</span>
                 {(middleChartItems.length > 3) ? 
                   (<span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth
+                    backgroundColor: "#c8c8c8",
+                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth,
+                    color: "#000"
                   }}
-                />)
+                >{middleChartItems[3].percentage}</span>)
                   : ""
                 }
                 
@@ -316,99 +316,100 @@ export default class HCW extends React.Component {
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: middleWidth}}
+                  style={{width: labelWidth}}
                 >
-                <div className="chart-label1">{middleChartItems[0].percentage}%</div>
-                  {middleChartItems[0].category}
+                <div className="chart-label1"></div>
+                  <div className="label-text">{middleChartItems[0].category}</div>
                   
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: middleWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label2">{middleChartItems[1].percentage}%</div>
-                  {middleChartItems[1].category}
+                  <div className="chart-label2"></div>
+                  <div className="label-text">{middleChartItems[1].category}</div>
                   
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: middleWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label3">{middleChartItems[2].percentage}%</div>
-                  {middleChartItems[2].category}
+                  <div className="chart-label3"></div>
+                  <div className="label-text">{middleChartItems[2].category}</div>
                 </span>
                 {(middleChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: middleWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label4">{middleChartItems[3].percentage}%</div>
-                  {middleChartItems[3].category}
+                  <div className="chart-label4"></div>
+                  <div className="label-text">{middleChartItems[3].category}</div>
                 </span>) : ""}
 
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.rightChart.label} <br />
+              {this.state.dataJSON.rightChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(253, 0, 0, 0.8)",
+                    backgroundColor: "#ff0000",
                     width: (rightChartItems[0].percentage/rightChartSum) * chartWidth
                   }}
-                />
+                >{rightChartItems[0].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(127, 0, 0, 0.8)",
+                    backgroundColor: "#c40000",
                     width: (rightChartItems[1].percentage/rightChartSum) * chartWidth
                   }}
-                />
+                >{rightChartItems[1].percentage}</span>
                 <span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(85, 0, 2, 0.8)",
+                    backgroundColor: "#870000",
                     width: (rightChartItems[2].percentage/rightChartSum) * chartWidth
                   }}
-                />
+                >{rightChartItems[2].percentage}</span>
                 {(rightChartItems.length > 3) ? (<span
                   className="chart-span"
                   style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth
+                    backgroundColor: "#c8c8c8",
+                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth,
+                    color: "#000"
                   }}
-                />) : ""}
+                >{rightChartItems[3].percentage}</span>) : ""}
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: rightWidth}}
+                  style={{width: labelWidth}}
                 >
-                <div className="chart-label1">{rightChartItems[0].percentage}%</div>
-                  {rightChartItems[0].category}
+                <div className="chart-label1"></div>
+                  <div className="label-text">{rightChartItems[0].category}</div>
                   
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: rightWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label2">{rightChartItems[1].percentage}%</div>
-                  {rightChartItems[1].category}
+                  <div className="chart-label2"></div>
+                  <div className="label-text">{rightChartItems[1].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: rightWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label3">{rightChartItems[2].percentage}%</div>
-                  {rightChartItems[2].category}
+                  <div className="chart-label3"></div>
+                  <div className="label-text">{rightChartItems[2].category}</div>
                   
                 </span>
                 {(rightChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: rightWidth}}
+                  style={{width: labelWidth}}
                 >
-                  <div className="chart-label4">{rightChartItems[3].percentage}%</div>
-                  {rightChartItems[3].category}
+                  <div className="chart-label4"></div>
+                  <div className="label-text">{rightChartItems[3].category}</div>
                 </span>) : ""}
               </div>
             </div>

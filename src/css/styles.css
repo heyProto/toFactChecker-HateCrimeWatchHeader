@@ -31,7 +31,7 @@ body {
 .protograph-col16-mode {
   width: 1280px;
   height: 420px;
-  background-image: radial-gradient(circle at 50% 54%, #000000, #793131);
+  background-image: radial-gradient(ellipse at center, #060303, #642929);
   margin: 0 auto;
   vertical-align: top;
   position: relative;
@@ -139,17 +139,22 @@ body {
 .chart-span {
   height: 30px;
   display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  line-height: 2.7;
+  font-size: 12px;
+  min-width: 7px;
 }
 
 .chart-label {
-  width: 25%;
   height: auto;
   display: inline-block;
   color: #fff;
   font-family: "AvenirLTStd-Book";
+  font-size: 10px;
   line-height: 1.5;
   vertical-align: top;
-  padding-right: 12px;
+  padding-right: 20px;
   
 }
 
@@ -162,10 +167,7 @@ body {
   font-family: AvenirLTStd-Book;
   font-size: 14px;
   font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
   line-height: 1.86;
-  letter-spacing: normal;
   color: #fcfcfc;
 }
 
@@ -193,30 +195,38 @@ body {
 }
 
 .chart-label1, .chart-label2, .chart-label3, .chart-label4{
-  width: 35px;
-  margin-bottom: 3px;
-  text-align: center;
-  padding: 3px;
-  border-radius: 2px;
-  box-shadow: 0px 0px 5px #424242;
+  width: 5px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 4px;
 }
 
 .chart-label1 {
-   background-color: rgba(253, 0, 0, 0.8) 
+   background-color: #ff0000; 
 }
 
 .chart-label2 {
-  background-color: rgba(127, 0, 0, 0.8)
+  background-color: #c40000
 }
 
 .chart-label3 {
-  background-color: rgba(85, 0, 2, 0.8);
+  background-color: #870000;
 }
 
 .chart-label4 {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #c8c8c8;
   color: #000;
 }
+
+.label-text {
+  font-size: 10px;
+  font-family: AvenirLTStd-Book;
+  display: inline-block;
+  width: 85%;
+  margin-top: 2px;
+}
+
 
   #label2.col-4-mode {
     display: inline-block;
