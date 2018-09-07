@@ -87,20 +87,20 @@ export default class HCW extends React.Component {
           </div>
           <div className="container col-4-mode" id="incidentChart">
             <div className="large-label col-4-mode">
-              {this.state.dataJSON.incidentChart.label1}
+              {this.state.dataJSON.data.incidentChart.label1}
             </div>
             <br />
             <div id="label2" className="large-label col-4-mode">
-              {this.state.dataJSON.incidentChart.label2}{" "}
-              {this.state.dataJSON.incidentChart.label3}
+              {this.state.dataJSON.data.incidentChart.label2}{" "}
+              {this.state.dataJSON.data.incidentChart.label3}
             </div>
             <br />
             <div className="large-num col-4-mode">
-            	{this.state.dataJSON.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
+            	{this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
             </div>
           </div>
           <div className="container col-4-mode" id="description">
-            {this.state.dataJSON.description}
+            {this.state.dataJSON.data.description}
           </div>
           <div className="bg" style={{ right: "-70px", bottom: "0px" }}>
             <img
@@ -111,11 +111,11 @@ export default class HCW extends React.Component {
           <div className="container col-4-mode" id="deathInjuryChart">
             <div id="deaths" style={{ display: "inline-block", float: "left", paddingLeft: '10px' }}>
               <div className="small-label col-4-mode">
-                {this.state.dataJSON.deathInjuryChart.deathLabel}
+                {this.state.dataJSON.data.deathInjuryChart.deathLabel}
               </div>
               <br />
               <div className="small-num col-4-mode" style={{ paddingLeft: "10px" }}>
-                {this.state.dataJSON.deathInjuryChart.deathNumber}
+                {this.state.dataJSON.data.deathInjuryChart.deathNumber}
               </div>
             </div>
             <div
@@ -123,11 +123,11 @@ export default class HCW extends React.Component {
               style={{ display: "inline-block", float: "right", paddingRight: '10px' }}
             >
               <div className="small-label col-4-mode">
-                {this.state.dataJSON.deathInjuryChart.injuryLabel}
+                {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
               </div>
               <br />
               <div className="small-num col-4-mode" style={{ paddingLeft: "5px" }}>
-                {this.state.dataJSON.deathInjuryChart.injuryNumber}
+                {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
               </div>
             </div>
           </div>
@@ -140,9 +140,9 @@ export default class HCW extends React.Component {
     if (this.state.fetchingData) {
       return <div>Loading</div>;
     } else {
-      let leftChartItems = this.state.dataJSON.leftChart.datapoints;
-      let middleChartItems = this.state.dataJSON.middleChart.datapoints;
-      let rightChartItems = this.state.dataJSON.rightChart.datapoints;
+      let leftChartItems = this.state.dataJSON.data.leftChart.datapoints;
+      let middleChartItems = this.state.dataJSON.data.middleChart.datapoints;
+      let rightChartItems = this.state.dataJSON.data.rightChart.datapoints;
       let chartWidth = 350;
       let leftChartSum = leftChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let middleChartSum = middleChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
@@ -165,39 +165,39 @@ export default class HCW extends React.Component {
             >
               <div>
                 <div className="large-label">
-                  {this.state.dataJSON.incidentChart.label1}{" "}
+                  {this.state.dataJSON.data.incidentChart.label1}{" "}
                   <span id="label2">
-                    {this.state.dataJSON.incidentChart.label2}
+                    {this.state.dataJSON.data.incidentChart.label2}
                   </span>{" "}
                   <span id="label3">
-                    {this.state.dataJSON.incidentChart.label3}
+                    {this.state.dataJSON.data.incidentChart.label3}
                   </span>
                 </div>{" "}
                 <div className="large-num">
-                  {this.state.dataJSON.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
+                  {this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
                 </div>
               </div>
             </div>
             <div className="number-chart" id="description">
-              {this.state.dataJSON.description}
+              {this.state.dataJSON.data.description}
             </div>
             <div className="number-chart" id="deathInjury">
               <div style={{ float: "left", display: "inline-block" }}>
                 <div className="small-label">
-                  {this.state.dataJSON.deathInjuryChart.deathLabel}
+                  {this.state.dataJSON.data.deathInjuryChart.deathLabel}
                 </div>
                 <br />
                 <div className="small-num" style={{ paddingLeft: "10px" }}>
-                  {this.state.dataJSON.deathInjuryChart.deathNumber}
+                  {this.state.dataJSON.data.deathInjuryChart.deathNumber}
                 </div>
               </div>
               <div style={{ float: "right" }}>
                 <div className="small-label">
-                  {this.state.dataJSON.deathInjuryChart.injuryLabel}
+                  {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
                 </div>
                 <br />
                 <div className="small-num">
-                  {this.state.dataJSON.deathInjuryChart.injuryNumber}
+                  {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
                 </div>
               </div>
             </div>
@@ -212,7 +212,7 @@ export default class HCW extends React.Component {
             }}
           >
             <div className="line-chart">
-              {this.state.dataJSON.leftChart.label} (in %)<br />
+              {this.state.dataJSON.data.leftChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -277,7 +277,7 @@ export default class HCW extends React.Component {
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.middleChart.label} (in %)<br />
+              {this.state.dataJSON.data.middleChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"
@@ -348,7 +348,7 @@ export default class HCW extends React.Component {
               </div>
             </div>
             <div className="line-chart">
-              {this.state.dataJSON.rightChart.label} (in %)<br />
+              {this.state.dataJSON.data.rightChart.label} (in %)<br />
               <div className="chart">
                 <span
                   className="chart-span"

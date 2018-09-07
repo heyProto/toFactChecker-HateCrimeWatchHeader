@@ -67,7 +67,9 @@ export default class editHCW extends React.Component {
   }
 
   onChangeHandler({formData}) {
-    let dataJSON = formData;
+    console.log({data: formData})
+    let dataJSON = {data: formData};
+    
     this.setState({dataJSON: dataJSON});
   }
 
@@ -100,7 +102,7 @@ export default class editHCW extends React.Component {
   }
 
   renderFormData() {
-    return this.state.dataJSON;
+    return this.state.dataJSON.data;
   }
 
 
