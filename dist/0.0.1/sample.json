@@ -1,4 +1,4 @@
-{ 
+{"data": {
 	"incidentChart": {
 		"label1": "Incidents of",
 		"label2": "hate",
@@ -71,4 +71,4 @@
 			]
 	},
 	"description": "As national crime data do not distinguish between violent crime and crime motivated by religious hatred, Hate Crime Watch is the first statistical perspective to a growing phenomenon of such violence."
-}
+}}
