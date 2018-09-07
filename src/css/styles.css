@@ -273,7 +273,7 @@ body {
   #deathInjuryChart.col-4-mode {
     width: 70%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 3%;
     z-index: 1;
     position: relative;
   }
