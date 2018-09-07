@@ -191,7 +191,7 @@ export default class HCW extends React.Component {
                   {this.state.dataJSON.data.deathInjuryChart.deathNumber}
                 </div>
               </div>
-              <div style={{ float: "right" }}>
+              <div style={{ float: "right", paddingRight: "15px" }}>
                 <div className="small-label">
                   {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
                 </div>
