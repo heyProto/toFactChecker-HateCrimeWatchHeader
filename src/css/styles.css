@@ -13,6 +13,13 @@
   src: url("https://cdn.protograph.pykih.com/lib/AEH.ttf") format("truetype");
 }
 
+:root {
+  --bg1: #ff2134;
+  --bg2: #5fbfcd;
+  --bg3: #fdfdfd;
+  --bg4: #b2b6b7;
+}
+
 body {
   min-width: initial !important;
 }
@@ -136,19 +143,35 @@ body {
   margin-top: 10px;
 }
 
-.chart-span {
+.chart-span1, .chart-span2, .chart-span3, .chart-span4 {
   height: 30px;
   display: inline-block;
   text-align: center;
   vertical-align: top;
   line-height: 2.7;
   font-size: 12px;
-  min-width: 7px;
+}
+
+.chart-span1, .chart-label1 {
+  background-color: var(--bg1);
+}
+
+.chart-span2, .chart-label2 {
+  background-color: var(--bg2);
+}
+
+.chart-span3, .chart-label3 {
+  background-color: var(--bg3);
+  color: #000;
+}
+
+.chart-span4, .chart-label4 {
+  background-color: var(--bg4);
+  color: #000;
 }
 
 .chart-label {
   height: auto;
-  display: inline-block;
   color: #fff;
   font-family: "AvenirLTStd-Book";
   font-size: 10px;
@@ -174,16 +197,22 @@ body {
 
 #label2 {
   font-size: 39px;
-  line-height: 1.05;
+  line-height: 0.05;
   letter-spacing: 7.4px;
   font-weight: 800;
 }
 
 #label3 {
   font-size: 39px;
-  line-height: 0.77;
+  line-height: 0.05;
   letter-spacing: 1px;
   font-weight: 800;
+}
+
+#label4 {
+  letter-spacing: 2.1px;
+  line-height: 8px;
+  text-align: justify;
 }
 
 .protograph-col4-mode {
@@ -201,23 +230,6 @@ body {
   display: inline-block;
   vertical-align: top;
   margin-right: 4px;
-}
-
-.chart-label1 {
-   background-color: #ff0000; 
-}
-
-.chart-label2 {
-  background-color: #c40000
-}
-
-.chart-label3 {
-  background-color: #870000;
-}
-
-.chart-label4 {
-  background-color: #c8c8c8;
-  color: #000;
 }
 
 .label-text {
@@ -240,6 +252,7 @@ body {
     width: 100%;
     text-align: center;
     font-size: 10px;
+    line-height: 6px;
   }
 
   .large-num.col-4-mode {
@@ -251,6 +264,12 @@ body {
 
   .small-label.col-4-mode {
     font-size: 10px;
+  }
+
+  #label4.col-4-mode {
+    margin-top: 23px;
+    font-size: 15px;
+    text-align: center;
   }
 
   #description.col-4-mode {
@@ -294,10 +313,7 @@ body {
     width: 320px;
   }
 
-  .full-width-div{
+  #HCW_card {
     overflow: hidden;
     height: 430px;
-    width: 100%;
-    position: relative;
-    display: inline-block;
   }

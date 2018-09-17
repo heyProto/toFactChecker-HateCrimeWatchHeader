@@ -26,6 +26,7 @@ export default class HCW extends React.Component {
 
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
+
       stateVar.dataJSON = this.props.dataJSON;
     }
 
@@ -92,11 +93,14 @@ export default class HCW extends React.Component {
             <br />
             <div id="label2" className="large-label col-4-mode">
               {this.state.dataJSON.data.incidentChart.label2}{" "}
-              {this.state.dataJSON.data.incidentChart.label3}
+              {this.state.dataJSON.data.incidentChart.label3}{" "}
+              <div id="label4" className="col-4-mode">
+                    {this.state.dataJSON.data.incidentChart.incidentYears}
+                  </div>
             </div>
             <br />
             <div className="large-num col-4-mode">
-            	{this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
+              {this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
             </div>
           </div>
           <div className="container col-4-mode" id="description">
@@ -147,7 +151,11 @@ export default class HCW extends React.Component {
       let leftChartSum = leftChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let middleChartSum = middleChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let rightChartSum = rightChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
-      let labelWidth = '25%'
+      let labelWidth = '25%';
+
+
+
+      console.log()
       return (
         <div id="protograph_div" className="protograph-col16-mode">
           <div
@@ -172,6 +180,9 @@ export default class HCW extends React.Component {
                   <span id="label3">
                     {this.state.dataJSON.data.incidentChart.label3}
                   </span>
+                  <div id="label4">
+                    {this.state.dataJSON.data.incidentChart.incidentYears}
+                  </div>
                 </div>{" "}
                 <div className="large-num">
                   {this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
@@ -215,53 +226,49 @@ export default class HCW extends React.Component {
               {this.state.dataJSON.data.leftChart.label} (in %)<br />
               <div className="chart">
                 <span
-                  className="chart-span"
+                  className="chart-span1"
                   style={{
                     backgroundColor: "#ff0000",
                     width: (leftChartItems[0].percentage/leftChartSum) * chartWidth
                   }}
                 >{leftChartItems[0].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span2"
                   style={{
-                    backgroundColor: "#c40000",
                     width: (leftChartItems[1].percentage/leftChartSum) * chartWidth
                   }}
                 >{leftChartItems[1].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span3"
                   style={{
-                    backgroundColor: "#870000",
                     width: (leftChartItems[2].percentage/leftChartSum) * chartWidth
                   }}
                 >{leftChartItems[2].percentage}</span>
                 {(leftChartItems.length > 3) ? (<span
-                  className="chart-span"
+                  className="chart-span4"
                   style={{
-                    backgroundColor: "#c8c8c8",
-                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth,
-                    color: "#000"
+                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth
                   }}
                 >{leftChartItems[3].percentage}</span>): ""}
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: leftChartItems[0].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label1"></div>
                   <div className="label-text">{leftChartItems[0].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: leftChartItems[1].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label2"></div>
                   <div className="label-text">{leftChartItems[1].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: leftChartItems[2].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label3"></div>
                   <div className="label-text">{leftChartItems[2].category}</div>
@@ -269,7 +276,7 @@ export default class HCW extends React.Component {
                 </span>
                 {(leftChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: leftChartItems[3].percentage > 0 ? 'inline-block':'none'}}
               >
                   <div className="chart-label4"></div>
                   <div className="label-text">{leftChartItems[3].category}</div> 
@@ -280,33 +287,28 @@ export default class HCW extends React.Component {
               {this.state.dataJSON.data.middleChart.label} (in %)<br />
               <div className="chart">
                 <span
-                  className="chart-span"
+                  className="chart-span1"
                   style={{
-                    backgroundColor: "#ff0000",
                     width: (middleChartItems[0].percentage/middleChartSum) * chartWidth
                   }}
                 >{middleChartItems[0].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span2"
                   style={{
-                    backgroundColor: "#c40000",
                     width: (middleChartItems[1].percentage/middleChartSum) * chartWidth
                   }}
                 >{middleChartItems[1].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span3"
                   style={{
-                    backgroundColor: "#870000",
                     width: (middleChartItems[2].percentage/middleChartSum) * chartWidth
                   }}
                 >{middleChartItems[2].percentage}</span>
                 {(middleChartItems.length > 3) ? 
                   (<span
-                  className="chart-span"
+                  className="chart-span4"
                   style={{
-                    backgroundColor: "#c8c8c8",
-                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth,
-                    color: "#000"
+                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth
                   }}
                 >{middleChartItems[3].percentage}</span>)
                   : ""
@@ -316,7 +318,7 @@ export default class HCW extends React.Component {
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: middleChartItems[0].percentage > 0 ? 'inline-block':'none'}}
                 >
                 <div className="chart-label1"></div>
                   <div className="label-text">{middleChartItems[0].category}</div>
@@ -324,7 +326,7 @@ export default class HCW extends React.Component {
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: middleChartItems[1].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label2"></div>
                   <div className="label-text">{middleChartItems[1].category}</div>
@@ -332,14 +334,14 @@ export default class HCW extends React.Component {
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: middleChartItems[2].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label3"></div>
                   <div className="label-text">{middleChartItems[2].category}</div>
                 </span>
                 {(middleChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: middleChartItems[3].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label4"></div>
                   <div className="label-text">{middleChartItems[3].category}</div>
@@ -351,39 +353,34 @@ export default class HCW extends React.Component {
               {this.state.dataJSON.data.rightChart.label} (in %)<br />
               <div className="chart">
                 <span
-                  className="chart-span"
+                  className="chart-span1"
                   style={{
-                    backgroundColor: "#ff0000",
                     width: (rightChartItems[0].percentage/rightChartSum) * chartWidth
                   }}
                 >{rightChartItems[0].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span2"
                   style={{
-                    backgroundColor: "#c40000",
                     width: (rightChartItems[1].percentage/rightChartSum) * chartWidth
                   }}
                 >{rightChartItems[1].percentage}</span>
                 <span
-                  className="chart-span"
+                  className="chart-span3"
                   style={{
-                    backgroundColor: "#870000",
                     width: (rightChartItems[2].percentage/rightChartSum) * chartWidth
                   }}
                 >{rightChartItems[2].percentage}</span>
                 {(rightChartItems.length > 3) ? (<span
-                  className="chart-span"
+                  className="chart-span4"
                   style={{
-                    backgroundColor: "#c8c8c8",
-                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth,
-                    color: "#000"
+                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth
                   }}
                 >{rightChartItems[3].percentage}</span>) : ""}
               </div>
               <div className="labels">
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: rightChartItems[0].percentage > 0 ? 'inline-block':'none'}}
                 >
                 <div className="chart-label1"></div>
                   <div className="label-text">{rightChartItems[0].category}</div>
@@ -391,14 +388,14 @@ export default class HCW extends React.Component {
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: rightChartItems[1].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label2"></div>
                   <div className="label-text">{rightChartItems[1].category}</div>
                 </span>
                 <span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: rightChartItems[2].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label3"></div>
                   <div className="label-text">{rightChartItems[2].category}</div>
@@ -406,7 +403,7 @@ export default class HCW extends React.Component {
                 </span>
                 {(rightChartItems.length > 3) ? (<span
                   className="chart-label"
-                  style={{width: labelWidth}}
+                  style={{width: labelWidth, display: rightChartItems[3].percentage > 0 ? 'inline-block':'none'}}
                 >
                   <div className="chart-label4"></div>
                   <div className="label-text">{rightChartItems[3].category}</div>

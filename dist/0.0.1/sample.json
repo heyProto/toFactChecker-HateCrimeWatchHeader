@@ -3,7 +3,8 @@
 		"label1": "Incidents of",
 		"label2": "hate",
 		"label3": "crime",
-		"incidentNumber": 240
+		"incidentNumber": 240,
+		"incidentYears": "(2009 - 2018)"
 	},
 	"deathInjuryChart": {
 		"deathLabel": "deaths",
@@ -19,12 +20,12 @@
 					"percentage": 61
 				},
 				{
-					"category": "Christian",
-					"percentage": 13
-				},
-				{
 					"category": "Hindu",
 					"percentage": 12
+				},
+				{
+					"category": "Christian",
+					"percentage": 13
 				},
 				{
 					"category": "Others",
@@ -36,12 +37,16 @@
 		"label": "Religion of perpetrators",
 		"datapoints": [
 				{
+					"category": "Muslim",
+					"percentage": 9
+				},
+				{
 					"category": "Hindu",
 					"percentage": 58
 				},
 				{
-					"category": "Muslim",
-					"percentage": 9
+					"category": "Christian",
+					"percentage": 0
 				},
 				{
 					"category": "Unknown",

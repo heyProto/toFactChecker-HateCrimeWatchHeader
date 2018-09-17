@@ -24,6 +24,12 @@
     								"title": "Number of incidents",
     								"default": 257,
     								"maximum": 999
+    							},
+    							"incidentYears": {
+    								"id": "/properties/data/properties/incidentChart/properties/incidentYears",
+    								"type": "string",
+    								"title": "Incident years",
+    								"default": "(2009 - 2018)"
     							}
     						}
     			},
