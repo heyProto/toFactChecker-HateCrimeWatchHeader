@@ -18,6 +18,9 @@
   --bg2: #5fbfcd;
   --bg3: #fdfdfd;
   --bg4: #b2b6b7;
+  --bg6: #dcdbdb;
+  --bg7: #a1a0a0;
+  --bg8: #808080;
 }
 
 body {
@@ -143,7 +146,7 @@ body {
   margin-top: 10px;
 }
 
-.chart-span1, .chart-span2, .chart-span3, .chart-span4 {
+.chart-span1, .chart-span2, .chart-span3, .chart-span4, .chart-span6, .chart-span7, .chart-span8 {
   height: 30px;
   display: inline-block;
   text-align: center;
@@ -168,6 +171,19 @@ body {
 .chart-span4, .chart-label4 {
   background-color: var(--bg4);
   color: #000;
+}
+
+.chart-span6, .chart-label6 {
+  background-color: var(--bg6);
+  color: #000;
+}
+
+.chart-span7, .chart-label7 {
+  background-color: var(--bg7);
+}
+
+.chart-span8, .chart-label8 {
+  background-color: var(--bg8);
 }
 
 .chart-label {
@@ -224,7 +240,7 @@ body {
   left: 0;
 }
 
-.chart-label1, .chart-label2, .chart-label3, .chart-label4{
+.chart-label1, .chart-label2, .chart-label3, .chart-label4, .chart-label6, .chart-label7, .chart-label8{
   width: 5px;
   height: 15px;
   display: inline-block;
