@@ -18,9 +18,9 @@
   --bg2: #5fbfcd;
   --bg3: #fdfdfd;
   --bg4: #b2b6b7;
-  --bg6: #dcdbdb;
-  --bg7: #a1a0a0;
-  --bg8: #808080;
+  --bg5: #FFBA00;
+  --bg6: #C3961C;
+  --bg7: #937116;
 }
 
 body {
@@ -146,7 +146,7 @@ body {
   margin-top: 10px;
 }
 
-.chart-span1, .chart-span2, .chart-span3, .chart-span4, .chart-span6, .chart-span7, .chart-span8 {
+.chart-span1, .chart-span2, .chart-span3, .chart-span4, .chart-span6, .chart-span7, .chart-span5 {
   height: 30px;
   display: inline-block;
   text-align: center;
@@ -173,6 +173,11 @@ body {
   color: #000;
 }
 
+.chart-span5, .chart-label5 {
+  background-color: var(--bg5);
+  color: #000;
+}
+
 .chart-span6, .chart-label6 {
   background-color: var(--bg6);
   color: #000;
@@ -180,10 +185,7 @@ body {
 
 .chart-span7, .chart-label7 {
   background-color: var(--bg7);
-}
-
-.chart-span8, .chart-label8 {
-  background-color: var(--bg8);
+  color: #000;
 }
 
 .chart-label {
@@ -240,7 +242,7 @@ body {
   top: 0;
 }
 
-.chart-label1, .chart-label2, .chart-label3, .chart-label4, .chart-label6, .chart-label7, .chart-label8{
+.chart-label1, .chart-label2, .chart-label3, .chart-label4, .chart-label6, .chart-label7, .chart-label5{
   width: 5px;
   height: 15px;
   display: inline-block;
