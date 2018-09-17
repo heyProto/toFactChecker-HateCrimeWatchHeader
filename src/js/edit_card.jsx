@@ -74,6 +74,7 @@ export default class editHCW extends React.Component {
   }
 
   loadCard() {
+      console.log(document.getElementsByClassName('protograph-col4-mode').length)
     return (<Card
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}

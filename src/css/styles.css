@@ -236,8 +236,8 @@ body {
   width: 100%;
   background-image: radial-gradient(ellipse at center, #060303, #642929);
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
 }
 
 .chart-label1, .chart-label2, .chart-label3, .chart-label4, .chart-label6, .chart-label7, .chart-label8{
@@ -333,3 +333,9 @@ body {
     overflow: hidden;
     height: 430px;
   }
+
+@media only screen and (min-width: 500px) {
+    .protograph-col4-mode {
+        width: 360px;
+    }
+}
