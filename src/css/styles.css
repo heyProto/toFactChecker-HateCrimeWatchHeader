@@ -197,7 +197,7 @@ body {
   vertical-align: top;
   padding-right: 12px;
   box-sizing: border-box;
-  
+
 }
 
 .labels {
@@ -323,7 +323,7 @@ body {
     position: absolute;
     overflow: hidden;
   }
-  
+
   .container.col-4-mode {
     height: auto;
     overflow: auto;
@@ -331,9 +331,12 @@ body {
     width: 320px;
   }
 
-  #HCW_card {
+  .full-width-div {
     overflow: hidden;
     height: 430px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
   }
 
 @media only screen and (min-width: 500px) {
