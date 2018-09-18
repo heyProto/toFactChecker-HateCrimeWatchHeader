@@ -207,7 +207,7 @@ body {
 
 #description {
   font-family: AvenirLTStd-Book;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.86;
   color: #fcfcfc;
@@ -278,6 +278,7 @@ body {
     font-weight: 800;
     width: 100%;
     text-align: center;
+    line-height: 1.2;
   }
 
   .small-label.col-4-mode {
@@ -292,10 +293,10 @@ body {
 
   #description.col-4-mode {
     width: 80%;
-    height: 30%;
+    height: 32%;
     margin: auto;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: normal;
     line-height: 1.7;
   }
@@ -326,7 +327,7 @@ body {
 
   .container.col-4-mode {
     height: auto;
-    overflow: auto;
+    overflow: hidden;
     padding-top:7px;
     width: 320px;
   }
