@@ -6,8 +6,8 @@
     <title>Hate Crime Watch</title>
     <link rel="stylesheet" type="text/css" href="card.min.css">
   </head>
-  <body style="margin:0px">
-    <div id="HCW_card" class="full-width-div"></div>
+  <body style="margin:0px;min-height: 430px; overflow:hidden;">
+    <div id="HCW_card" class="full-width-div" ></div>
     <script src="https://cdn.protograph.pykih.com/lib/protograph-core.min.js"></script>
     <script src = "card.min.js"></script>
     <script type="text/javascript">
@@ -91,9 +91,9 @@
           x.renderCol4();
           break;
         case "col16":
-        default: 
+        default:
           x.renderCol16();
-          break;  
+          break;
       }
     }
 
