@@ -228,7 +228,6 @@ export default class HCW extends React.Component {
                 <span
                   className="chart-span1"
                   style={{
-                    backgroundColor: "#ff0000",
                     width: (leftChartItems[0].percentage/leftChartSum) * chartWidth
                   }}
                 >{leftChartItems[0].percentage}</span>
