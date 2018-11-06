@@ -87,10 +87,6 @@ export default class HCW extends React.Component {
             />
           </div>
           <div className="container col-4-mode" id="incidentChart">
-            <div className="large-label col-4-mode">
-              {this.state.dataJSON.data.incidentChart.label1}
-            </div>
-            <br />
             <div id="label2" className="large-label col-4-mode">
               {this.state.dataJSON.data.incidentChart.label2}{" "}
               {this.state.dataJSON.data.incidentChart.label3}{" "}
@@ -153,9 +149,6 @@ export default class HCW extends React.Component {
       let rightChartSum = rightChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
       let labelWidth = '25%';
 
-
-
-      console.log()
       return (
         <div id="protograph_div" className="protograph-col16-mode">
           <div
@@ -173,7 +166,6 @@ export default class HCW extends React.Component {
             >
               <div>
                 <div className="large-label">
-                  {this.state.dataJSON.data.incidentChart.label1}{" "}
                   <span id="label2">
                     {this.state.dataJSON.data.incidentChart.label2}
                   </span>{" "}
@@ -271,14 +263,14 @@ export default class HCW extends React.Component {
                 >
                   <div className="chart-label3"></div>
                   <div className="label-text">{leftChartItems[2].category}</div>
-                  
+
                 </span>
                 {(leftChartItems.length > 3) ? (<span
                   className="chart-label"
                   style={{width: labelWidth, display: leftChartItems[3].percentage > 0 ? 'inline-block':'none'}}
               >
                   <div className="chart-label4"></div>
-                  <div className="label-text">{leftChartItems[3].category}</div> 
+                  <div className="label-text">{leftChartItems[3].category}</div>
                 </span>) : ""}
               </div>
             </div>
@@ -303,7 +295,7 @@ export default class HCW extends React.Component {
                     width: (middleChartItems[2].percentage/middleChartSum) * chartWidth
                   }}
                 >{middleChartItems[2].percentage}</span>
-                {(middleChartItems.length > 3) ? 
+                {(middleChartItems.length > 3) ?
                   (<span
                   className="chart-span4"
                   style={{
@@ -312,7 +304,7 @@ export default class HCW extends React.Component {
                 >{middleChartItems[3].percentage}</span>)
                   : ""
                 }
-                
+
               </div>
               <div className="labels">
                 <span
@@ -321,7 +313,7 @@ export default class HCW extends React.Component {
                 >
                 <div className="chart-label1"></div>
                   <div className="label-text">{middleChartItems[0].category}</div>
-                  
+
                 </span>
                 <span
                   className="chart-label"
@@ -329,7 +321,7 @@ export default class HCW extends React.Component {
                 >
                   <div className="chart-label2"></div>
                   <div className="label-text">{middleChartItems[1].category}</div>
-                  
+
                 </span>
                 <span
                   className="chart-label"
@@ -383,7 +375,7 @@ export default class HCW extends React.Component {
                 >
                 <div className="chart-label5"></div>
                   <div className="label-text">{rightChartItems[0].category}</div>
-                  
+
                 </span>
                 <span
                   className="chart-label"
@@ -398,7 +390,7 @@ export default class HCW extends React.Component {
                 >
                   <div className="chart-label7"></div>
                   <div className="label-text">{rightChartItems[2].category}</div>
-                  
+
                 </span>
                 {(rightChartItems.length > 3) ? (<span
                   className="chart-label"

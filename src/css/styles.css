@@ -105,11 +105,11 @@ body {
   font-weight: 450;
   font-style: normal;
   font-stretch: normal;
-  line-height: 2.38;
+  line-height: 2.38em;
   letter-spacing: 0.8px;
   text-align: justify;
   color: #ffffff;
-  padding-top: 17px;
+  padding-top: 2.7em;
 }
 
 .small-label {
@@ -271,6 +271,7 @@ body {
     text-align: center;
     font-size: 10px;
     line-height: 6px;
+    padding-top: 17px;
   }
 
   .large-num.col-4-mode {
