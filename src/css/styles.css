@@ -97,11 +97,11 @@ body {
 }
 
 .large-label {
-  width: 128px;
+  width: 160px;
   display: inline-block;
   text-transform: uppercase;
   font-family: Avenir-Bold;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 450;
   font-style: normal;
   font-stretch: normal;
@@ -214,7 +214,7 @@ body {
 }
 
 #label2 {
-  font-size: 39px;
+  font-size: 48px;
   line-height: 0.05;
   letter-spacing: 7.4px;
   font-weight: 800;
@@ -228,7 +228,7 @@ body {
 }
 
 #label4 {
-  letter-spacing: 2.1px;
+  letter-spacing: 3px;
   line-height: 8px;
   text-align: justify;
 }

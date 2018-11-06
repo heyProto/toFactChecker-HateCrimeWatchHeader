@@ -1,8 +1,7 @@
 {"data": {
 	"incidentChart": {
-		"label1": "incidents of",
 		"label2": "hate",
-		"label3": "crime",
+		"label3": "crimes",
 		"incidentNumber": 240,
 		"incidentYears": "(2009 - 2018)"
 	},
