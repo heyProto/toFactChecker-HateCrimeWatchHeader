@@ -91,12 +91,14 @@ export default class HCW extends React.Component {
               {this.state.dataJSON.data.incidentChart.label2}{" "}
               {this.state.dataJSON.data.incidentChart.label3}{" "}
               <div id="label4" className="col-4-mode">
-                    {this.state.dataJSON.data.incidentChart.incidentYears}
-                  </div>
+                {this.state.dataJSON.data.incidentChart.incidentYears}
+              </div>
             </div>
             <br />
             <div className="large-num col-4-mode">
-              {this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
+              {this.state.dataJSON.data.incidentChart.incidentNumber
+                .toString()
+                .padStart(3, "0") || "000"}
             </div>
           </div>
           <div className="container col-4-mode" id="description">
@@ -109,24 +111,39 @@ export default class HCW extends React.Component {
             />
           </div>
           <div className="container col-4-mode" id="deathInjuryChart">
-            <div id="deaths" style={{ display: "inline-block", float: "left", paddingLeft: '10px' }}>
+            <div
+              id="deaths"
+              style={{
+                display: "inline-block",
+                float: "left",
+                paddingLeft: "10px"
+              }}
+            >
               <div className="small-label col-4-mode">
                 {this.state.dataJSON.data.deathInjuryChart.deathLabel}
               </div>
               <br />
-              <div className="small-num col-4-mode" style={{ paddingLeft: "10px" }}>
+              <div
+                className="small-num col-4-mode"
+              >
                 {this.state.dataJSON.data.deathInjuryChart.deathNumber}
               </div>
             </div>
             <div
               id="injuries"
-              style={{ display: "inline-block", float: "right", paddingRight: '10px' }}
+              style={{
+                display: "inline-block",
+                float: "right",
+                paddingRight: "10px"
+              }}
             >
               <div className="small-label col-4-mode">
                 {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
               </div>
               <br />
-              <div className="small-num col-4-mode" style={{ paddingLeft: "5px" }}>
+              <div
+                className="small-num col-4-mode"
+              >
                 {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
               </div>
             </div>
@@ -143,262 +160,434 @@ export default class HCW extends React.Component {
       let leftChartItems = this.state.dataJSON.data.leftChart.datapoints;
       let middleChartItems = this.state.dataJSON.data.middleChart.datapoints;
       let rightChartItems = this.state.dataJSON.data.rightChart.datapoints;
-      let chartWidth = 350;
-      let leftChartSum = leftChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
-      let middleChartSum = middleChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
-      let rightChartSum = rightChartItems.map(item => item.percentage).reduce((prev, next) => prev + next);
-      let labelWidth = '25%';
+      let chartWidth = 370;
+      let leftChartSum = leftChartItems
+        .map(item => item.percentage)
+        .reduce((prev, next) => prev + next);
+      let middleChartSum = middleChartItems
+        .map(item => item.percentage)
+        .reduce((prev, next) => prev + next);
+      let rightChartSum = rightChartItems
+        .map(item => item.percentage)
+        .reduce((prev, next) => prev + next);
+      let labelWidth = "25%";
 
       return (
         <div id="protograph_div" className="protograph-col16-mode">
-          <div
-            className="top-divs"
-            style={{
-              backgroundImage: "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-2-1x.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "top left"
-            }}
-          >
+          <div className="content">
             <div
-              className="number-chart"
-              id="incidentChart"
-              style={{ paddingTop: "20px" }}
+              className="top-divs"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-2-1x.png')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "top left"
+              }}
             >
-              <div>
-                <div className="large-label">
-                  <span id="label2">
-                    {this.state.dataJSON.data.incidentChart.label2}
-                  </span>{" "}
-                  <span id="label3">
-                    {this.state.dataJSON.data.incidentChart.label3}
-                  </span>
-                  <div id="label4">
-                    {this.state.dataJSON.data.incidentChart.incidentYears}
-                  </div>
-                </div>{" "}
-                <div className="large-num">
-                  {this.state.dataJSON.data.incidentChart.incidentNumber.toString().padStart(3, '0') || '000'}
-                </div>
-              </div>
-            </div>
-            <div className="number-chart" id="description">
-              {this.state.dataJSON.data.description}
-            </div>
-            <div className="number-chart" id="deathInjury">
-              <div style={{ float: "left", display: "inline-block" }}>
-                <div className="small-label">
-                  {this.state.dataJSON.data.deathInjuryChart.deathLabel}
-                </div>
-                <br />
-                <div className="small-num" style={{ paddingLeft: "10px" }}>
-                  {this.state.dataJSON.data.deathInjuryChart.deathNumber}
-                </div>
-              </div>
-              <div style={{ float: "right", paddingRight: "15px" }}>
-                <div className="small-label">
-                  {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
-                </div>
-                <br />
-                <div className="small-num">
-                  {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="bottom-divs"
-            style={{
-              backgroundImage: "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-1-1x.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "720px -20px"
-            }}
-          >
-            <div className="line-chart">
-              {this.state.dataJSON.data.leftChart.label} (in %)<br />
-              <div className="chart">
-                <span
-                  className="chart-span1"
-                  style={{
-                    width: (leftChartItems[0].percentage/leftChartSum) * chartWidth
-                  }}
-                >{leftChartItems[0].percentage}</span>
-                <span
-                  className="chart-span2"
-                  style={{
-                    width: (leftChartItems[1].percentage/leftChartSum) * chartWidth
-                  }}
-                >{leftChartItems[1].percentage}</span>
-                <span
-                  className="chart-span3"
-                  style={{
-                    width: (leftChartItems[2].percentage/leftChartSum) * chartWidth
-                  }}
-                >{leftChartItems[2].percentage}</span>
-                {(leftChartItems.length > 3) ? (<span
-                  className="chart-span4"
-                  style={{
-                    width: (leftChartItems[3].percentage/leftChartSum) * chartWidth
-                  }}
-                >{leftChartItems[3].percentage}</span>): ""}
-              </div>
-              <div className="labels">
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: leftChartItems[0].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label1"></div>
-                  <div className="label-text">{leftChartItems[0].category}</div>
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: leftChartItems[1].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label2"></div>
-                  <div className="label-text">{leftChartItems[1].category}</div>
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: leftChartItems[2].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label3"></div>
-                  <div className="label-text">{leftChartItems[2].category}</div>
-
-                </span>
-                {(leftChartItems.length > 3) ? (<span
-                  className="chart-label"
-                  style={{width: labelWidth, display: leftChartItems[3].percentage > 0 ? 'inline-block':'none'}}
+              <div
+                className="number-chart"
+                id="incidentChart"
               >
-                  <div className="chart-label4"></div>
-                  <div className="label-text">{leftChartItems[3].category}</div>
-                </span>) : ""}
+                <div>
+                  <div className="large-label">
+                    <div className="label2">
+                      {this.state.dataJSON.data.incidentChart.label2}
+                    </div>{" "}
+                    <div className="label3">
+                      {this.state.dataJSON.data.incidentChart.label3}
+                    </div>
+                    <div className="label4">
+                      {this.state.dataJSON.data.incidentChart.incidentYears}
+                    </div>
+                  </div>{" "}
+                  <div className="large-num">
+                    {this.state.dataJSON.data.incidentChart.incidentNumber
+                      .toString()
+                      .padStart(3, "0") || "000"}
+                  </div>
+                </div>
+              </div>
+              <div className="number-chart" id="description">
+                {this.state.dataJSON.data.description}
+              </div>
+              <div className="number-chart" id="deathInjury">
+                <div style={{ display: "inline-block", paddingLeft: "25px" }}>
+                  <div className="small-label">
+                    {this.state.dataJSON.data.deathInjuryChart.deathLabel}
+                  </div>
+                  <br />
+                  <div className="small-num">
+                    {this.state.dataJSON.data.deathInjuryChart.deathNumber}
+                  </div>
+                </div>
+                <div style={{ float: "right", paddingRight: "25px" }}>
+                  <div className="small-label">
+                    {this.state.dataJSON.data.deathInjuryChart.injuryLabel}
+                  </div>
+                  <br />
+                  <div className="small-num">
+                    {this.state.dataJSON.data.deathInjuryChart.injuryNumber}
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="line-chart">
-              {this.state.dataJSON.data.middleChart.label} (in %)<br />
-              <div className="chart">
-                <span
-                  className="chart-span1"
-                  style={{
-                    width: (middleChartItems[0].percentage/middleChartSum) * chartWidth
-                  }}
-                >{middleChartItems[0].percentage}</span>
-                <span
-                  className="chart-span2"
-                  style={{
-                    width: (middleChartItems[1].percentage/middleChartSum) * chartWidth
-                  }}
-                >{middleChartItems[1].percentage}</span>
-                <span
-                  className="chart-span3"
-                  style={{
-                    width: (middleChartItems[2].percentage/middleChartSum) * chartWidth
-                  }}
-                >{middleChartItems[2].percentage}</span>
-                {(middleChartItems.length > 3) ?
-                  (<span
-                  className="chart-span4"
-                  style={{
-                    width: (middleChartItems[3].percentage/middleChartSum) * chartWidth
-                  }}
-                >{middleChartItems[3].percentage}</span>)
-                  : ""
-                }
 
+            <div
+              className="bottom-divs"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.protograph.pykih.com/786b8a918de9dc171ca6/glass-1-1x.png')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "720px -20px"
+              }}
+            >
+              <div className="line-chart">
+                {this.state.dataJSON.data.leftChart.label} (%)
+                <br />
+                <div className="chart">
+                  <span
+                    className="chart-span1"
+                    style={{
+                      width:
+                        (leftChartItems[0].percentage / leftChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {leftChartItems[0].percentage}
+                  </span>
+                  <span
+                    className="chart-span2"
+                    style={{
+                      width:
+                        (leftChartItems[1].percentage / leftChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {leftChartItems[1].percentage}
+                  </span>
+                  <span
+                    className="chart-span3"
+                    style={{
+                      width:
+                        (leftChartItems[2].percentage / leftChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {leftChartItems[2].percentage}
+                  </span>
+                  {leftChartItems.length > 3 ? (
+                    <span
+                      className="chart-span4"
+                      style={{
+                        width:
+                          (leftChartItems[3].percentage / leftChartSum) *
+                          chartWidth
+                      }}
+                    >
+                      {leftChartItems[3].percentage}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="labels">
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        leftChartItems[0].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label1" />
+                    <div className="label-text">
+                      {leftChartItems[0].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        leftChartItems[1].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label2" />
+                    <div className="label-text">
+                      {leftChartItems[1].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        leftChartItems[2].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label3" />
+                    <div className="label-text">
+                      {leftChartItems[2].category}
+                    </div>
+                  </span>
+                  {leftChartItems.length > 3 ? (
+                    <span
+                      className="chart-label"
+                      style={{
+                        width: labelWidth,
+                        display:
+                          leftChartItems[3].percentage > 0
+                            ? "inline-block"
+                            : "none"
+                      }}
+                    >
+                      <div className="chart-label4" />
+                      <div className="label-text">
+                        {leftChartItems[3].category}
+                      </div>
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-              <div className="labels">
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: middleChartItems[0].percentage > 0 ? 'inline-block':'none'}}
-                >
-                <div className="chart-label1"></div>
-                  <div className="label-text">{middleChartItems[0].category}</div>
-
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: middleChartItems[1].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label2"></div>
-                  <div className="label-text">{middleChartItems[1].category}</div>
-
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: middleChartItems[2].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label3"></div>
-                  <div className="label-text">{middleChartItems[2].category}</div>
-                </span>
-                {(middleChartItems.length > 3) ? (<span
-                  className="chart-label"
-                  style={{width: labelWidth, display: middleChartItems[3].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label4"></div>
-                  <div className="label-text">{middleChartItems[3].category}</div>
-                </span>) : ""}
-
+              <div className="line-chart">
+                {this.state.dataJSON.data.middleChart.label} (%)
+                <br />
+                <div className="chart">
+                  <span
+                    className="chart-span1"
+                    style={{
+                      width:
+                        (middleChartItems[0].percentage / middleChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {middleChartItems[0].percentage}
+                  </span>
+                  <span
+                    className="chart-span2"
+                    style={{
+                      width:
+                        (middleChartItems[1].percentage / middleChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {middleChartItems[1].percentage}
+                  </span>
+                  <span
+                    className="chart-span3"
+                    style={{
+                      width:
+                        (middleChartItems[2].percentage / middleChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {middleChartItems[2].percentage}
+                  </span>
+                  {middleChartItems.length > 3 ? (
+                    <span
+                      className="chart-span4"
+                      style={{
+                        width:
+                          (middleChartItems[3].percentage / middleChartSum) *
+                          chartWidth
+                      }}
+                    >
+                      {middleChartItems[3].percentage}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="labels">
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        middleChartItems[0].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label1" />
+                    <div className="label-text">
+                      {middleChartItems[0].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        middleChartItems[1].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label2" />
+                    <div className="label-text">
+                      {middleChartItems[1].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        middleChartItems[2].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label3" />
+                    <div className="label-text">
+                      {middleChartItems[2].category}
+                    </div>
+                  </span>
+                  {middleChartItems.length > 3 ? (
+                    <span
+                      className="chart-label"
+                      style={{
+                        width: labelWidth,
+                        display:
+                          middleChartItems[3].percentage > 0
+                            ? "inline-block"
+                            : "none"
+                      }}
+                    >
+                      <div className="chart-label4" />
+                      <div className="label-text">
+                        {middleChartItems[3].category}
+                      </div>
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="line-chart">
-              {this.state.dataJSON.data.rightChart.label} (in %)<br />
-              <div className="chart">
-                <span
-                  className="chart-span5"
-                  style={{
-                    width: (rightChartItems[0].percentage/rightChartSum) * chartWidth
-                  }}
-                >{rightChartItems[0].percentage}</span>
-                <span
-                  className="chart-span6"
-                  style={{
-                    width: (rightChartItems[1].percentage/rightChartSum) * chartWidth
-                  }}
-                >{rightChartItems[1].percentage}</span>
-                <span
-                  className="chart-span7"
-                  style={{
-                    width: (rightChartItems[2].percentage/rightChartSum) * chartWidth
-                  }}
-                >{rightChartItems[2].percentage}</span>
-                {(rightChartItems.length > 3) ? (<span
-                  className="chart-span4"
-                  style={{
-                    width: (rightChartItems[3].percentage/rightChartSum) * chartWidth
-                  }}
-                >{rightChartItems[3].percentage}</span>) : ""}
-              </div>
-              <div className="labels">
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: rightChartItems[0].percentage > 0 ? 'inline-block':'none'}}
-                >
-                <div className="chart-label5"></div>
-                  <div className="label-text">{rightChartItems[0].category}</div>
-
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: rightChartItems[1].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label6"></div>
-                  <div className="label-text">{rightChartItems[1].category}</div>
-                </span>
-                <span
-                  className="chart-label"
-                  style={{width: labelWidth, display: rightChartItems[2].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label7"></div>
-                  <div className="label-text">{rightChartItems[2].category}</div>
-
-                </span>
-                {(rightChartItems.length > 3) ? (<span
-                  className="chart-label"
-                  style={{width: labelWidth, display: rightChartItems[3].percentage > 0 ? 'inline-block':'none'}}
-                >
-                  <div className="chart-label4"></div>
-                  <div className="label-text">{rightChartItems[3].category}</div>
-                </span>) : ""}
+              <div className="line-chart">
+                {this.state.dataJSON.data.rightChart.label} (%)
+                <br />
+                <div className="chart">
+                  <span
+                    className="chart-span5"
+                    style={{
+                      width:
+                        (rightChartItems[0].percentage / rightChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {rightChartItems[0].percentage}
+                  </span>
+                  <span
+                    className="chart-span6"
+                    style={{
+                      width:
+                        (rightChartItems[1].percentage / rightChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {rightChartItems[1].percentage}
+                  </span>
+                  <span
+                    className="chart-span7"
+                    style={{
+                      width:
+                        (rightChartItems[2].percentage / rightChartSum) *
+                        chartWidth
+                    }}
+                  >
+                    {rightChartItems[2].percentage}
+                  </span>
+                  {rightChartItems.length > 3 ? (
+                    <span
+                      className="chart-span4"
+                      style={{
+                        width:
+                          (rightChartItems[3].percentage / rightChartSum) *
+                          chartWidth
+                      }}
+                    >
+                      {rightChartItems[3].percentage}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="labels">
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        rightChartItems[0].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label5" />
+                    <div className="label-text">
+                      {rightChartItems[0].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        rightChartItems[1].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label6" />
+                    <div className="label-text">
+                      {rightChartItems[1].category}
+                    </div>
+                  </span>
+                  <span
+                    className="chart-label"
+                    style={{
+                      width: labelWidth,
+                      display:
+                        rightChartItems[2].percentage > 0
+                          ? "inline-block"
+                          : "none"
+                    }}
+                  >
+                    <div className="chart-label7" />
+                    <div className="label-text">
+                      {rightChartItems[2].category}
+                    </div>
+                  </span>
+                  {rightChartItems.length > 3 ? (
+                    <span
+                      className="chart-label"
+                      style={{
+                        width: labelWidth,
+                        display:
+                          rightChartItems[3].percentage > 0
+                            ? "inline-block"
+                            : "none"
+                      }}
+                    >
+                      <div className="chart-label4" />
+                      <div className="label-text">
+                        {rightChartItems[3].category}
+                      </div>
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
           </div>
